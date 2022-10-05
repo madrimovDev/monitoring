@@ -1,13 +1,20 @@
 import React from 'react'
 import { Button, Form as AntForm, Input } from 'antd'
+import { useAppDispatch, useAppSelector } from '../../hook'
+import { loginAction } from '../../store/actions'
 
 const { Item } = AntForm
 
 const Form = () => {
 	const [form] = AntForm.useForm()
+	const { status } = useAppSelector(state => state.auth)
+	const dispatch = useAppDispatch()
 
 	const finish = ( e: any ) => {
-		console.log(e, form.resetFields())
+		dispatch(loginAction({
+			username: e.username,
+			password: e.password
+		}))
 	}
 
 	return (
@@ -31,7 +38,8 @@ const Form = () => {
 				<Input.Password />
 			</Item>
 			<Item>
-				<Button style={{ width: '100%' }} htmlType={'submit'} type={'primary'}>Login</Button>
+				<Button loading={status === 'PENDING'} style={{ width: '100%' }} htmlType={'submit'}
+								type={'primary'}>Login</Button>
 			</Item>
 		</AntForm>
 	)

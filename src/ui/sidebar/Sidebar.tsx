@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout } from 'antd'
-import useSidebar from '../../hook/useSidebar'
+import { useSidebar } from '../../hook'
 import Menu from '../menu/Menu'
 
 const { Sider } = Layout
