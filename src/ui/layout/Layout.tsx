@@ -1,8 +1,8 @@
 import React from 'react'
 import { Col, Layout as AntLayout, Row } from 'antd'
 import { Outlet } from 'react-router-dom'
-import Header from '../header/Header'
-import Sidebar from '../sidebar/Sidebar'
+import Header from './header/Header'
+import Sidebar from './sidebar/Sidebar'
 
 const { Content } = AntLayout
 

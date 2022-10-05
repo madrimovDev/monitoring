@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from 'antd'
 import { useLocation } from 'react-router-dom'
-import pathnameParse from '../../utils/pathnameParse'
+import pathnameParse from '../../../utils/pathnameParse'
 
 const AntTitle = Typography.Title
 
