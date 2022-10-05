@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import { Admins, Dashboard, Login, PageNotFound } from './pages'
-import { Layout } from './ui'
-import RequireAuth from './pages/RequireAuth'
-import { useAppSelector } from './hook'
+import { Admins, Dashboard, Login, PageNotFound } from '@/pages'
+import { Layout } from '@/ui'
+import RequireAuth from '@/pages/RequireAuth'
+import { useAppSelector } from '@/hook'
 
 const App = () => {
 	const { status } = useAppSelector(state => state.auth)

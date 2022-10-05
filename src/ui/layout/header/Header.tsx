@@ -1,5 +1,5 @@
-import React, { CSSProperties, RefObject } from 'react'
-import { Button, Layout } from 'antd'
+import React, { CSSProperties } from 'react'
+import { Layout } from 'antd'
 import Title from './Title'
 
 const AntHeader = Layout.Header

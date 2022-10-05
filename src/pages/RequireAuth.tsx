@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { useAppSelector } from '../hook'
+import { useAppSelector } from '@/hook'
 
 const RequireAuth = () => {
 	const location = useLocation()
