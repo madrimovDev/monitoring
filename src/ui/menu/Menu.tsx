@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Menu as AntMenu, MenuProps } from 'antd'
-import { ControlOutlined, DashboardOutlined, DatabaseOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons'
+import {
+	ControlOutlined,
+	DashboardOutlined,
+	DatabaseOutlined,
+	GroupOutlined,
+	TeamOutlined,
+	UserOutlined
+} from '@ant-design/icons'
 import { Link, useLocation } from 'react-router-dom'
 
 type MenuItem = Required<MenuProps>['items'][number]
@@ -26,6 +33,9 @@ const items: MenuProps['items'] = [
 		fontSize: '20px'
 	}} />),
 	getItem(<Link to={'/admins'} children={'Admins'} />, '/admins', <ControlOutlined style={{
+		fontSize: '20px'
+	}} />),
+	getItem(<Link to={'/directions'} children={'Directions'} />, '/directions', <GroupOutlined style={{
 		fontSize: '20px'
 	}} />),
 	getItem(<Link to={'/teachers'} children={'Teachers'} />, '/teachers', <UserOutlined style={{
