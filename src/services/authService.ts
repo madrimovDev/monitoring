@@ -1,6 +1,6 @@
-import api from '../api'
+import api from '@/api'
 import { AuthResponseType } from './types/authResponseType'
-import UserType from '../store/types/userType'
+import UserType from '@/store/types/userType'
 
 class AuthService {
 	static async login( user: UserType ) {

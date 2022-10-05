@@ -1,4 +1,4 @@
-import { UserMappedType } from '../../mapper/authResponseMapper'
+import { UserMappedType } from '@/mapper/authResponseMapper'
 
 interface AuthInitialStateType {
 	status: 'PENDING' | 'FULFILLED' | 'REJECTED' | 'DEFAULT',
