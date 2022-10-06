@@ -22,4 +22,4 @@ export const verifyAction = createAsyncThunk('auth/verify', async ( _, { rejectW
 	}
 })
 
-export const logoutAction =  createAction('auth/logout')
+export const logoutAction = createAction('auth/logout')
