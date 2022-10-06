@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const api = axios
 
-api.defaults.baseURL = 'http://62.113.108.69:1530/api/v1'
+api.defaults.baseURL = import.meta.env.VITE_BASE_URL
+console.log(import.meta.env)
 
 interface AxiosResponseType {
 	username: string
