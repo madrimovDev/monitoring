@@ -24,7 +24,7 @@ const colors: string[] = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime']
 
 const AdminCollapse = () => {
 	return (
-		<Collapse bordered expandIconPosition={'end'}>
+		<Collapse expandIconPosition={'end'}>
 			{
 				admins.map(item => (
 					<Collapse.Panel key={item.id} header={item.name}>

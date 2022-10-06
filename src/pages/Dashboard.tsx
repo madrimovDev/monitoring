@@ -1,6 +1,6 @@
 import React from 'react'
 import { Space } from 'antd'
-import { StatisticsCard } from '@ui'
+import { AnimatedPage, StatisticsCard } from '@ui'
 
 export type Directions = 'Frontend' | 'Backend' | 'Android' | 'Python'
 export type Roles = 'Teachers' | 'Groups' | 'Students' | 'Admins'
@@ -106,7 +106,7 @@ const statisticsCards: StatisticsCardType[] = [
 
 const Dashboard = () => {
 	return (
-		<div>
+		<AnimatedPage>
 			<Space style={{
 				alignItems: 'start',
 				flexWrap: 'wrap'
@@ -119,7 +119,7 @@ const Dashboard = () => {
 					})
 				}
 			</Space>
-		</div>
+		</AnimatedPage>
 	)
 }
 

@@ -3,8 +3,11 @@ import { createReducer } from '@reduxjs/toolkit'
 import { loginAction, logoutAction, verifyAction } from '../actions'
 
 const initialState: AuthInitialStateType = {
-	status: 'DEFAULT',
-	data: null
+	status: 'FULFILLED',
+	data: {
+		username: 'username',
+		permissions: []
+	}
 }
 
 const authReducer = createReducer(initialState, builder => {
