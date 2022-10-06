@@ -1,10 +1,8 @@
 import React from 'react'
 import { Col, Layout as AntLayout, Row } from 'antd'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
-import { AnimatePresence } from 'framer-motion'
-import { Admins, Dashboard, PageNotFound } from '@pages'
 
 const { Content } = AntLayout
 
@@ -17,13 +15,7 @@ const Layout = () => {
 				<Header />
 				<Row>
 					<Col span={22} offset={1}>
-						<AnimatePresence mode={'wait'}>
-							<Routes location={location} key={location.pathname}>
-								<Route index element={<Dashboard />} />
-								<Route path={'/admins'} element={<Admins />} />
-								<Route path={'*'} element={<PageNotFound />} />
-							</Routes>
-						</AnimatePresence>
+						<Outlet />
 					</Col>
 				</Row>
 			</Content>
