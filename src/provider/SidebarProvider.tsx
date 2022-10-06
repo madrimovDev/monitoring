@@ -5,7 +5,7 @@ interface SidebarProviderPropsType {
 	children: ReactNode
 }
 
-const SidebarProvider = ({children}: SidebarProviderPropsType) => {
+const SidebarProvider = ( { children }: SidebarProviderPropsType ) => {
 	const [open, setOpen] = useState<boolean>(false)
 	const onOpen = () => setOpen(true)
 	const onClose = () => setOpen(false)
