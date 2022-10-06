@@ -1,10 +1,18 @@
 import React from 'react'
+import { Drawer as AntDrawer } from 'antd'
+import { useAppDispatch, useAppSelector } from '@hook'
+import { closeDrawer } from '@store/actions'
 
 const Drawer = () => {
-	return (
-		<div>
+	const { open } = useAppSelector(state => state.adminDrawer)
+	const dispatch = useAppDispatch()
 
-		</div>
+	const onClose = () => dispatch(closeDrawer())
+
+	return (
+		<AntDrawer onClose={onClose} open={open}>
+
+		</AntDrawer>
 	)
 }
 
