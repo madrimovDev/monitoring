@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react'
 import { Layout } from 'antd'
 import Title from './Title'
+import LogoutButton from './LogoutButton'
 
 const AntHeader = Layout.Header
 
@@ -16,8 +17,9 @@ const styles: CSSProperties = {
 
 const Header = () => {
 	return (
-		<AntHeader style={styles} >
+		<AntHeader style={styles}>
 			<Title />
+			<LogoutButton />
 		</AntHeader>
 	)
 }

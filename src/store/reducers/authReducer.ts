@@ -1,7 +1,6 @@
 import AuthInitialStateType from '../types/authTypes'
 import { createReducer } from '@reduxjs/toolkit'
-import { loginAction, logoutAction } from '../actions'
-import { verifyAction } from '../actions'
+import { loginAction, logoutAction, verifyAction } from '../actions'
 
 const initialState: AuthInitialStateType = {
 	status: 'DEFAULT',
@@ -34,9 +33,10 @@ const authReducer = createReducer(initialState, builder => {
 		state.error = action.error.message
 	})
 	.addCase(logoutAction, ( state, action ) => {
-		state.status = 'DEFAULT',
-			state.data = null,
-			state.error = ''
+		state.status = 'DEFAULT'
+		state.data = null
+		state.error = ''
+		localStorage.removeItem('accessToken')
 	})
 })
 

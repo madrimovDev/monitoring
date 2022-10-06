@@ -1,11 +1,14 @@
 import React from 'react'
-import { AdminTable } from '@ui'
+import { AdminCollapse } from '@ui'
+import { Col, Row } from 'antd'
 
 const Admins = () => {
 	return (
-		<div>
-			<AdminTable/>
-		</div>
+		<Row style={{ marginTop: 60 }}>
+			<Col span={16} offset={4}>
+				<AdminCollapse />
+			</Col>
+		</Row>
 	)
 }
 
