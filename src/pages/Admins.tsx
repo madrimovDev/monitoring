@@ -1,5 +1,5 @@
 import React from 'react'
-import { AdminTable } from '@/ui'
+import { AdminTable } from '@ui'
 
 const Admins = () => {
 	return (

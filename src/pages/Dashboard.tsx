@@ -1,6 +1,6 @@
 import React from 'react'
 import { Space } from 'antd'
-import { StatisticsCard } from '@/ui'
+import { StatisticsCard } from '@ui'
 
 export type Directions = 'Frontend' | 'Backend' | 'Android' | 'Python'
 export type Roles = 'Teachers' | 'Groups' | 'Students' | 'Admins'

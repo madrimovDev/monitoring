@@ -8,7 +8,9 @@ const styles: CSSProperties = {
 	background: '#fff',
 	display: 'flex',
 	justifyContent: 'space-between',
-	alignItems: 'center'
+	alignItems: 'center',
+	boxShadow: '0 5px 5px rgba(0,0,0, 0.04)',
+	borderLeft: '1px solid rgba(0,0,0, 0.05)'
 }
 
 

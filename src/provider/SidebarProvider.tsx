@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react'
-import { SidebarContext } from '@/context'
+import { SidebarContext } from '@context'
 
 interface SidebarProviderPropsType {
 	children: ReactNode

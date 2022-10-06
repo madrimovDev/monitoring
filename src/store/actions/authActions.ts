@@ -1,8 +1,8 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { AuthService } from '@/services'
-import { authResponseMapper, responseErrorMapper } from '@/mapper'
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { AuthService } from '@services'
+import { authResponseMapper, responseErrorMapper } from '@mapper'
 import { AxiosError } from 'axios'
-import UserType from '@/store/types/userType'
+import UserType from '@store/types/userType'
 
 export const loginAction = createAsyncThunk('auth/login', async ( user: UserType, { rejectWithValue } ) => {
 	try {
@@ -21,3 +21,5 @@ export const verifyAction = createAsyncThunk('auth/verify', async ( _, { rejectW
 		throw rejectWithValue(responseErrorMapper(err as AxiosError<{ message: string }>))
 	}
 })
+
+export const logoutAction =  createAction('auth/logout')

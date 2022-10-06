@@ -21,8 +21,65 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
-      "@/*": [
-        "./*"
+      "@api/*": [
+        "./api/*"
+      ],
+      "@context/*": [
+        "./context/*"
+      ],
+      "@hook/*": [
+        "./hook/*"
+      ],
+      "@mapper/*": [
+        "./mapper/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@provider/*": [
+        "./provide/*r"
+      ],
+      "@services/*": [
+        "./services/*"
+      ],
+      "@store/*": [
+        "./store/*"
+      ],
+      "@ui/*": [
+        "./ui/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@api": [
+        "./api"
+      ],
+      "@context": [
+        "./context"
+      ],
+      "@hook": [
+        "./hook"
+      ],
+      "@mapper": [
+        "./mapper"
+      ],
+      "@pages": [
+        "./pages"
+      ],
+      "@provider": [
+        "./provider"
+      ],
+      "@services": [
+        "./services"
+      ],
+      "@store": [
+        "./store"
+      ],
+      "@ui": [
+        "./ui"
+      ],
+      "@utils": [
+        "./utils"
       ]
     }
   },
