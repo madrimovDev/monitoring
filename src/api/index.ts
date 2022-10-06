@@ -3,7 +3,6 @@ import axios from 'axios'
 const api = axios
 
 api.defaults.baseURL = import.meta.env.VITE_BASE_URL
-console.log(import.meta.env)
 
 interface AxiosResponseType {
 	username: string
