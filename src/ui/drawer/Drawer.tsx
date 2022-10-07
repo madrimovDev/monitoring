@@ -10,7 +10,7 @@ const Drawer = () => {
 	const onClose = () => dispatch(closeDrawer())
 
 	return (
-		<AntDrawer onClose={onClose} open={open}>
+		<AntDrawer width={500} onClose={onClose} open={open}>
 
 		</AntDrawer>
 	)

@@ -4,10 +4,7 @@ import { loginAction, logoutAction, verifyAction } from '../actions'
 
 const initialState: AuthInitialStateType = {
 	status: 'FULFILLED',
-	data: {
-		username: 'username',
-		permissions: []
-	}
+	data: null
 }
 
 const authReducer = createReducer(initialState, builder => {
