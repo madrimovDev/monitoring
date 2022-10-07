@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
-import { Space } from 'antd'
+import { Divider, Row, Typography } from 'antd'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { getDashboard } from '@store/actions'
+import { DashboardStatistics } from '@ui'
 
+const { Title } = Typography
 
 const Dashboard = () => {
 	const { data, status } = useAppSelector(state => state.dashboard)
@@ -12,12 +14,23 @@ const Dashboard = () => {
 	}, [dispatch])
 
 	return (
-		<Space style={{
-			alignItems: 'start',
-			flexWrap: 'wrap'
-		}}>
+		<>
+			<Title level={2} style={{
+				marginTop: 60
+			}}>Total</Title>
+			<Divider />
+			<Row gutter={[20, 20]}>
 
-		</Space>
+				{data && (
+					<>
+						<DashboardStatistics loading={status === 'PENDNIG'} title={'Directions'} count={data?.directions.length} />
+						<DashboardStatistics loading={status === 'PENDNIG'} title={'Students'} count={data?.students} />
+						<DashboardStatistics loading={status === 'PENDNIG'} title={'Teachers'} count={data?.teachers} />
+						<DashboardStatistics loading={status === 'PENDNIG'} title={'Groups'} count={data?.groups} />
+					</>
+				)}
+			</Row>
+		</>
 	)
 }
 

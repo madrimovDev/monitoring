@@ -35,7 +35,7 @@ const AdminCollapse = () => {
 								</Typography.Text>
 								{
 									item.permissons.map(( item, index ) => (
-										<Tag color={colors[index]}>{item}</Tag>
+										<Tag key={item} color={colors[index]}>{item}</Tag>
 									))
 								}
 							</Space>
