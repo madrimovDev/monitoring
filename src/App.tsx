@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import { Login, RequireAuth } from '@pages'
+import { Admins, Dashboard, Login, PageNotFound, RequireAuth } from '@pages'
 import { Layout } from '@ui'
 import { useAppSelector } from '@hook'
 
@@ -19,7 +19,11 @@ const App = () => {
 		<Routes>
 			<Route path={'login'} element={<Login />} />
 			<Route element={<RequireAuth />}>
-				<Route path={'*'} element={<Layout />} />
+				<Route path={'/'} element={<Layout />}>
+					<Route index element={<Dashboard />} />
+					<Route path={'/admins'} element={<Admins />} />
+					<Route path={'*'} element={<PageNotFound />} />
+				</Route>
 			</Route>
 		</Routes>
 	)

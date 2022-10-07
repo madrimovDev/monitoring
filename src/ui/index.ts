@@ -1,6 +1,4 @@
 export { default as Form } from './login/Form'
 export { default as Layout } from './layout/Layout'
-export { default as StatisticsCard } from './statisticsCard/StatisticsCard'
 export { default as AdminCollapse } from './collapse/AdminCollapse'
-export { default as AnimatedPage } from './animatedPage/AnimatedPage'
 export { default as AdminDrawer } from './drawer/Drawer'

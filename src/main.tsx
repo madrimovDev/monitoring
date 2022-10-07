@@ -6,10 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { SidebarProvider } from './provider'
 import { Provider } from 'react-redux'
 import { store } from '@store'
+import { verifyAction } from '@store/actions'
 
 const root = createRoot(document.getElementById('root') as HTMLElement)
 
-// store.dispatch(verifyAction())
+store.dispatch(verifyAction())
 
 const app = (
 	<Provider store={store}>
