@@ -11,7 +11,10 @@ const styles: CSSProperties = {
 	justifyContent: 'space-between',
 	alignItems: 'center',
 	boxShadow: '0 5px 5px rgba(0,0,0, 0.04)',
-	borderLeft: '1px solid rgba(0,0,0, 0.05)'
+	borderLeft: '1px solid rgba(0,0,0, 0.05)',
+	position: 'sticky',
+	top: 0,
+	zIndex: 111
 }
 
 
