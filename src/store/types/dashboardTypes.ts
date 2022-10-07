@@ -5,7 +5,6 @@ export interface IDirection {
 	students: number
 	teachers: number
 	groups: number
-	slug: string
 }
 
 export interface IDashboard {
