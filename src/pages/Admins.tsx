@@ -1,5 +1,5 @@
 import React from 'react'
-import { AdminCollapse, AdminDrawer } from '@ui'
+import { AdminDrawer, AdminTable } from '@ui'
 import { Button, Col, Divider, Row, Space } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { useAppDispatch } from '@hook'
@@ -16,7 +16,7 @@ const Admins = () => {
 						<Button type={'primary'} onClick={onOpen} icon={<UserAddOutlined />}>Create Admin</Button>
 					</Space>
 					<Divider />
-					<AdminCollapse />
+					<AdminTable />
 				</Col>
 			</Row>
 			<AdminDrawer />
