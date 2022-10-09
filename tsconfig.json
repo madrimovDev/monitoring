@@ -51,6 +51,12 @@
       "@utils/*": [
         "./utils/*"
       ],
+      "@scheme": [
+        "./scheme"
+      ],
+      "@scheme/*": [
+        "./scheme/*"
+      ],
       "@api": [
         "./api"
       ],

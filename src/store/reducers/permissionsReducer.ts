@@ -2,9 +2,9 @@ import { InitialState } from '@store/types/types'
 import { createReducer } from '@reduxjs/toolkit'
 import { getPermissions } from '@store/actions'
 
-const initialState: InitialState<string[]> = {
+const initialState: InitialState<{ message: string, permissions: string[] }> = {
 	status: 'DEFAULT',
-	data: []
+	data: null
 }
 
 const permissionsReducer = createReducer(initialState, builder => {

@@ -1,6 +1,6 @@
 interface FieldData {
 	name: string
-	value: string | number
+	value: string | number | []
 }
 
 const fieldsData = ( data: any ) => {
@@ -9,10 +9,12 @@ const fieldsData = ( data: any ) => {
 	if (!data) return arr
 
 	Object.keys(data).forEach(( key ) => {
-		arr.push({
-			name: key,
-			value: data[key]
-		})
+		if (key !== 'id') {
+			arr.push({
+				name: key,
+				value: data[key]
+			})
+		}
 	})
 
 	return arr

@@ -1,8 +1,8 @@
 import api from '@api'
 
-class PermissonService{
-	static async get () {
-		const response = api.get<string[]>('/permissions')
+class PermissonService {
+	static async get() {
+		const response = api.get<{ message: string, permissions: string[] }>('/permissions')
 		return response
 	}
 }
