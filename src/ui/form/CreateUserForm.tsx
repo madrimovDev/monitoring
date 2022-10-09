@@ -17,8 +17,6 @@ const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 	const { status, data: permission } = useAppSelector(permissions)
 	const fields = entity == 'update' ? fieldsData(data) : []
 
-	console.log(permission)
-
 	const onfinish = ( data: any ) => {
 		const _data = {
 			...data,
@@ -26,10 +24,14 @@ const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 		}
 		Object.keys(data).forEach(( key ) => {
 			if (data[key] === true) {
-				delete data[key]
+				delete _data[key]
 				_data.permissions.push(key)
 			}
+			if (!_data[key]) {
+				delete _data[key]
+			}
 		})
+		console.log(_data)
 	}
 
 	return (
@@ -41,8 +43,8 @@ const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 							<>
 								{permission && permission.permissions.map(item => {
 									const key = field.value as Array<string>
-									return <Item key={item} noStyle valuePropName={'checked'}>
-										<Checkbox defaultChecked={key.includes(item)}>{item}</Checkbox>
+									return <Item key={item}  valuePropName={'checked'}>
+										<Checkbox defaultChecked={key.includes(item)} >{item}</Checkbox>
 									</Item>
 								})}
 							</>
