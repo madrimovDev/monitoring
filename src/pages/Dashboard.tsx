@@ -3,11 +3,12 @@ import { Divider, Row, Typography } from 'antd'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { getDashboard } from '@store/actions'
 import { DashboardStatistics } from '@ui'
+import { dashboard } from '@store'
 
 const { Title } = Typography
 
 const Dashboard = () => {
-	const { data, status } = useAppSelector(state => state.dashboard)
+	const { data, status } = useAppSelector(dashboard)
 	const dispatch = useAppDispatch()
 	useEffect(() => {
 		dispatch(getDashboard())

@@ -3,11 +3,12 @@ import { Col, Divider, message, Row, Typography } from 'antd'
 import { Form } from '@ui'
 import { useAppSelector } from '@hook'
 import { useNavigate } from 'react-router-dom'
+import { auth } from '@store'
 
 const { Title } = Typography
 
 const Login = () => {
-	const { status } = useAppSelector(state => state.auth)
+	const { status } = useAppSelector(auth)
 	const navigate = useNavigate()
 
 	useEffect(() => {

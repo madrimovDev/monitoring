@@ -1,22 +1,25 @@
 import AdminDrawerInitialState from '@store/types/adminDrawerTypes'
 import { createReducer } from '@reduxjs/toolkit'
-import { closeDrawer, openDrawer, openWithPayload } from '@store/actions'
+import { closeDrawer, openDrawer } from '@store/actions'
 
 const initialState: AdminDrawerInitialState = {
-	open: false
+	open: false,
+	type: 'admin',
+	entity: 'create',
+	data: {}
 }
 
 const adminDrawerReducer = createReducer(initialState, builder => {
 	builder
-	.addCase(openDrawer, ( state ) => {
+	.addCase(openDrawer, ( state, action ) => {
 		state.open = true
+		state.type = action.payload.type
+		state.entity = action.payload.entity
+		state.data = action.payload.data
 	})
 	.addCase(closeDrawer, ( state ) => {
 		state.open = false
-	})
-	.addCase(openWithPayload, ( state, action ) => {
-		state.open = true
-		state.data = action.payload
+		state.data = {}
 	})
 })
 
