@@ -9,7 +9,6 @@ const { Column } = Table
 
 interface DataType {
 	id: React.Key
-	key: React.Key
 	name: string
 	username: string
 	password: string
@@ -19,7 +18,6 @@ interface DataType {
 const data: DataType = {
 	name: 'Admin',
 	id: nanoid(),
-	key: nanoid(),
 	username: 'username',
 	password: 'password',
 	permissions: ['groups', 'teachers', 'students', 'directions']
@@ -28,7 +26,6 @@ const data: DataType = {
 const datas: DataType[] = new Array(5).fill(data).map(( item, index ) => ({
 	...item,
 	id: item.id + nanoid(),
-	key: nanoid() + item.key,
 	name: item.name + ' ' + (index + 1)
 }))
 
