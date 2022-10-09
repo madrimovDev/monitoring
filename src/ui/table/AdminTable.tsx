@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Space, Table, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { useAppDispatch } from '@hook'
-import { openDrawer } from '@store'
+import { getPermissions, openDrawer } from '@store'
 import { nanoid } from 'nanoid'
 
 const { Column } = Table
@@ -38,6 +38,7 @@ const AdminTable = () => {
 			entity: 'update',
 			data: record
 		}))
+		dispatch(getPermissions())
 	}
 
 	return (

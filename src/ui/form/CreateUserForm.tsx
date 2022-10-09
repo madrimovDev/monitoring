@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input } from 'antd'
 import { IAdmin, ITeacher } from '@store/types/permissionsType'
 import fieldsData from '@utils/fieldsData'
 import { useAppSelector } from '@hook'
-import { drawer } from '@store'
+import { drawer, permissions } from '@store'
 
 const { Item, List } = Form
 
@@ -14,7 +14,10 @@ interface CreateUserFormPropsType {
 
 const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 	const { type, entity } = useAppSelector(drawer)
+	const { status, data: permission } = useAppSelector(permissions)
 	const fields = entity == 'update' ? fieldsData(data) : []
+
+	console.log(permission)
 
 	const onfinish = ( data: any ) => {
 		const _data = {
@@ -36,11 +39,12 @@ const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 					if (field.name === 'permissions') {
 						return (
 							<>
-								{Array.isArray(field.value) && field.value.map(item => (
-									<Item key={item} name={item} noStyle valuePropName={'checked'}>
-										<Checkbox checked={true}>{item}</Checkbox>
+								{permission && permission.permissions.map(item => {
+									const key = field.value as Array<string>
+									return <Item key={item} noStyle valuePropName={'checked'}>
+										<Checkbox defaultChecked={key.includes(item)}>{item}</Checkbox>
 									</Item>
-								))}
+								})}
 							</>
 						)
 					}
