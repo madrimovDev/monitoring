@@ -1,30 +1,45 @@
 import React from 'react'
 import { Button, Space, Table, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
+import { useAppDispatch } from '@hook'
+import { openDrawer } from '@store'
 
 const { Column } = Table
 
 interface DataType {
-	key: React.Key;
+	id: React.Key
 	name: string
-	permissions: string[];
+	username: string
+	password: string
+	permissions: string[]
 }
 
 const data: DataType = {
 	name: 'Admin',
-	key: Date.now(),
+	id: Date.now(),
+	username: 'username',
+	password: 'password',
 	permissions: ['groups', 'teachers', 'students', 'directions']
 }
 
 const datas: DataType[] = new Array(5).fill(data).map(( item, index ) => ({
 	...item,
-	name: item.name + ' ' + (index + 1),
-	key: item.key + index
+	name: item.name + ' ' + (index + 1)
 }))
 
 const AdminTable = () => {
+	const dispatch = useAppDispatch()
+
+	const onEdit = ( record: DataType ) => {
+		dispatch(openDrawer({
+			type: 'admin',
+			entity: 'update',
+			data: record
+		}))
+	}
+
 	return (
-		<Table size={'middle'} showHeader title={( ) => 'Admins'} rowKey={record => record.name} dataSource={datas}>
+		<Table size={'middle'} showHeader title={() => 'Admins'} rowKey={record => record.name} dataSource={datas}>
 			<Column title={'Name'} dataIndex={'name'} key={'name'} />
 			<Column title={'Permission'} dataIndex={'permissions'} key={'permissions'} render={( value: string[] ) => {
 				return (
@@ -37,9 +52,10 @@ const AdminTable = () => {
 					</>
 				)
 			}} />
-			<Column title={'Action'} key={'action'} render={() => (
+			<Column title={'Action'} key={'action'} render={( value, record, index ) => (
 				<Space>
-					<Button size={'small'} type={'primary'} icon={<EditFilled />}>Edit</Button>
+					<Button onClick={() => onEdit(value)} size={'small'} type={'primary'}
+									icon={<EditFilled />}>Edit</Button>
 					<Button size={'small'} danger icon={<DeleteFilled />}>Delete</Button>
 				</Space>
 			)} />
