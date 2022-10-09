@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { adminDrawerReducer, authReducer, dashboardReducer } from './reducers'
+import { adminDrawerReducer, authReducer, dashboardReducer, permissionsReducer } from './reducers'
 
 const store = configureStore({
 	reducer: {
 		auth: authReducer,
 		adminDrawer: adminDrawerReducer,
-		dashboard: dashboardReducer
+		dashboard: dashboardReducer,
+		permissions: permissionsReducer
 	}
 })
 
