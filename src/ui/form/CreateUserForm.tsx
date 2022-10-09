@@ -17,7 +17,16 @@ const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 	const fields = entity == 'update' ? fieldsData(data) : []
 
 	const onfinish = ( data: any ) => {
-		console.log(data as IAdmin)
+		const _data = {
+			...data,
+			permissions: []
+		}
+		Object.keys(data).forEach(( key ) => {
+			if (data[key] === true) {
+				delete data[key]
+				_data.permissions.push(key)
+			}
+		})
 	}
 
 	return (
@@ -26,11 +35,13 @@ const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
 				fields.map(field => {
 					if (field.name === 'permissions') {
 						return (
-							<Item colon={false} >
+							<>
 								{Array.isArray(field.value) && field.value.map(item => (
-									<Checkbox  />
+									<Item key={item} name={item} noStyle valuePropName={'checked'}>
+										<Checkbox checked={true}>{item}</Checkbox>
+									</Item>
 								))}
-							</Item>
+							</>
 						)
 					}
 					return (
