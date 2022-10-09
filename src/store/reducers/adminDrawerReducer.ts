@@ -6,7 +6,7 @@ const initialState: AdminDrawerInitialState = {
 	open: false,
 	type: 'admin',
 	entity: 'create',
-	data: {}
+	data: null
 }
 
 const adminDrawerReducer = createReducer(initialState, builder => {
@@ -15,11 +15,11 @@ const adminDrawerReducer = createReducer(initialState, builder => {
 		state.open = true
 		state.type = action.payload.type
 		state.entity = action.payload.entity
-		state.data = action.payload.data
+		state.data = action.payload.data || null
 	})
 	.addCase(closeDrawer, ( state ) => {
 		state.open = false
-		state.data = {}
+		state.data = null
 	})
 })
 

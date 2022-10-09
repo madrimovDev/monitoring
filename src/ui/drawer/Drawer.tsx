@@ -6,15 +6,14 @@ import CreateUserForm from '@ui/form/CreateUserForm'
 import { drawer } from '@store/selectors/selectors'
 
 const Drawer = () => {
-	const { open, type, entity } = useAppSelector(drawer)
+	const { open, type, entity, data } = useAppSelector(drawer)
 	const dispatch = useAppDispatch()
-
 	const onClose = () => dispatch(closeDrawer())
 
 	return (
 		<AntDrawer title={`${entity} ${type}`} headerStyle={{ textTransform: 'capitalize' }} width={500} onClose={onClose}
 							 open={open}>
-			<CreateUserForm />
+			<CreateUserForm data={data} />
 		</AntDrawer>
 	)
 }
