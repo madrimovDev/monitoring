@@ -5,24 +5,27 @@ const { Item, List } = Form
 
 const CreateUserForm = () => {
 	return (
-		<Form layout={'vertical'}>
-			<Item label={'Username'} rules={[
+		<Form layout={'vertical'} autoComplete={'off'}>
+			<Item label={'Username'} name={'username'} rules={[
 				{
 					required: true,
 					min: 4,
-					type: 'string'
+					type: 'string',
+					message: 'Username is required'
 				}
 			]}>
 				<Input />
 			</Item>
-			<Item label={'Password'} rules={[
+			<Item label={'Password'} name={'password'} rules={[
 				{
 					required: true,
 					min: 4,
-					type: 'string'
+					type: 'string',
+					message: 'Password is required'
+
 				}
 			]}>
-				<Input.Password />
+				<Input />
 			</Item>
 		</Form>
 	)
