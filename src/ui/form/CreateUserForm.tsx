@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Input } from 'antd'
 import { IAdmin, ITeacher } from '@store/types/permissionsType'
+import fieldsData from '@utils/fieldsData'
 
 const { Item, List } = Form
 
@@ -8,15 +9,13 @@ interface CreateUserFormPropsType {
 	data?: ITeacher | IAdmin | null
 }
 
-const CreateUserForm = ({data}: CreateUserFormPropsType) => {
-	console.log(data)
+
+const CreateUserForm = ( { data }: CreateUserFormPropsType ) => {
+
+	const fields = fieldsData(data)
+
 	return (
-		<Form layout={'vertical'} fields={[
-			{
-				name: 'username',
-				value: data?.username
-			}
-		]} autoComplete={'off'}>
+		<Form layout={'vertical'} fields={fields} autoComplete={'off'}>
 			<Item label={'Username'} name={'username'} rules={[
 				{
 					required: true,

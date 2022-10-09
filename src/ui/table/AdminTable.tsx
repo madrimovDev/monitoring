@@ -3,11 +3,13 @@ import { Button, Space, Table, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { useAppDispatch } from '@hook'
 import { openDrawer } from '@store'
+import { nanoid } from 'nanoid'
 
 const { Column } = Table
 
 interface DataType {
 	id: React.Key
+	key: React.Key
 	name: string
 	username: string
 	password: string
@@ -16,7 +18,8 @@ interface DataType {
 
 const data: DataType = {
 	name: 'Admin',
-	id: Date.now(),
+	id: nanoid(),
+	key: nanoid(),
 	username: 'username',
 	password: 'password',
 	permissions: ['groups', 'teachers', 'students', 'directions']
@@ -24,6 +27,8 @@ const data: DataType = {
 
 const datas: DataType[] = new Array(5).fill(data).map(( item, index ) => ({
 	...item,
+	id: item.id + nanoid(),
+	key: nanoid() + item.key,
 	name: item.name + ' ' + (index + 1)
 }))
 
@@ -39,7 +44,7 @@ const AdminTable = () => {
 	}
 
 	return (
-		<Table size={'middle'} showHeader title={() => 'Admins'} rowKey={record => record.name} dataSource={datas}>
+		<Table size={'middle'} showHeader title={() => 'Admins'} dataSource={datas} rowKey={'key'}>
 			<Column title={'Name'} dataIndex={'name'} key={'name'} />
 			<Column title={'Permission'} dataIndex={'permissions'} key={'permissions'} render={( value: string[] ) => {
 				return (
