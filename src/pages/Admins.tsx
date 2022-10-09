@@ -1,5 +1,5 @@
 import React from 'react'
-import { AdminDrawer, AdminTable, TeacherTable } from '@ui'
+import { AdminDrawer, AdminTable } from '@ui'
 import { Button, Col, Divider, Row, Space } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { useAppDispatch } from '@hook'
@@ -17,8 +17,6 @@ const Admins = () => {
 					</Space>
 					<Divider />
 					<AdminTable />
-					<Divider />
-					<TeacherTable />
 				</Col>
 			</Row>
 			<AdminDrawer />
