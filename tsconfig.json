@@ -57,6 +57,12 @@
       "@scheme/*": [
         "./scheme/*"
       ],
+      "@routes/*": [
+        "./routes/*"
+      ],
+      "@routes": [
+        "./routes"
+      ],
       "@api": [
         "./api"
       ],
