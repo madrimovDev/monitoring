@@ -1,8 +1,8 @@
-import { IAdmin, ITeacher } from '@store/types/permissionsType'
+import { Admin } from '@services/types/adminResponseTypes'
 
 interface AdminDrawerInitialState {
 	open: boolean
-	data?: ITeacher | IAdmin | null
+	data?: Admin
 	type: 'teacher' | 'student' | 'group' | 'admin' | 'direction'
 	entity: 'create' | 'update'
 }

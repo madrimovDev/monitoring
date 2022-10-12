@@ -4,6 +4,7 @@ import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { admins, getPermissions, openDrawer } from '@store'
 import { nanoid } from 'nanoid'
+import { deleteAdmin } from '@store/actions/adminsActions'
 
 const { Column } = Table
 
@@ -42,6 +43,10 @@ const AdminTable = () => {
 		dispatch(getPermissions())
 	}
 
+	const onDelete = ( id: number ) => {
+		dispatch(deleteAdmin(id))
+	}
+
 	return (
 		<Table size={'middle'} showHeader title={() => 'Admins'} loading={status === 'PENDNIG'} dataSource={data || []}
 					 rowKey={'id'}>
@@ -61,7 +66,7 @@ const AdminTable = () => {
 				<Space>
 					<Button onClick={() => onEdit(value)} size={'small'} type={'primary'}
 									icon={<EditFilled />}>Edit</Button>
-					<Button size={'small'} danger icon={<DeleteFilled />}>Delete</Button>
+					<Button onClick={() => onDelete(value.id)} size={'small'} danger icon={<DeleteFilled />}>Delete</Button>
 				</Space>
 			)} />
 		</Table>

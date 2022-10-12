@@ -1,53 +1,30 @@
 import React, { useEffect } from 'react'
-import { Button, Checkbox, CheckboxOptionType, Divider, Form, Input } from 'antd'
-import { closeDrawer, drawer, permissions } from '@store'
+import { Button, Checkbox, Divider, Form, Input } from 'antd'
+import { drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
 import fieldsData from '@utils/fieldsData'
-import { createAdmin } from '@store/actions/adminsActions'
+import { createAdmin, updateAdmin } from '@store/actions/adminsActions'
 
 const { Item } = Form
 
-const options: CheckboxOptionType[] = [
-	{
-		label: 'Admins',
-		value: 'admins'
-	},
-	{
-		label: 'Students',
-		value: 'students'
-	},
-	{
-		label: 'Groups',
-		value: 'groups'
-	},
-	{
-		label: 'Directions',
-		value: 'directions'
-	},
-	{
-		label: 'Users',
-		value: 'users'
-	},
-	{
-		label: 'Teachers',
-		value: 'teachers'
-	},
-	{
-		label: 'Dashboard',
-		value: 'dashboard'
-	}
-]
 
 const AdminCreateForm = () => {
 	const [form] = Form.useForm()
 	const dispatch = useAppDispatch()
-	const { open, data } = useAppSelector(drawer)
+	const { open, data, entity } = useAppSelector(drawer)
 	const { status, data: permissionsData } = useAppSelector(permissions)
 	const fields = fieldsData(data)
 
-	const onFinish = ( data: any ) => {
-
-		dispatch(createAdmin(data))
+	const onFinish = ( formData: any ) => {
+		if (entity === 'create') {
+			dispatch(createAdmin(formData))
+		} else {
+			console.log()
+			dispatch(updateAdmin({
+				admin: formData,
+				id: data?.id || 0
+			}))
+		}
 	}
 
 	useEffect(() => {
