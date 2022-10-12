@@ -1,10 +1,20 @@
-export interface IAdmin{
+export interface Admin{
+	id: number
+	userId: number
+	role: string
 	username: string
-	password: string
 	name: string
 	permissions: string[]
 }
 
-export interface IAdminResponse extends IAdmin{
-	id: number
+interface IAdminResponse {
+	message: string
+}
+
+export interface IAdmins extends IAdminResponse{
+	admins: Admin[]
+}
+
+export interface IAdmin extends IAdminResponse{
+	admin: Admin
 }

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AdminService } from '@services'
 import { responseErrorMapper } from '@mapper'
 import { AxiosError } from 'axios'
-import { IAdmin } from '@store/types/permissionsType'
+import { IAdmin, IAdmins, Admin } from '@services/types/adminResponseTypes'
 
 export const getAllAdmins = createAsyncThunk('admin/getAll', async ( _, { rejectWithValue } ) => {
 	try {
@@ -13,7 +13,7 @@ export const getAllAdmins = createAsyncThunk('admin/getAll', async ( _, { reject
 	}
 })
 
-export const createAdmin = createAsyncThunk('admin/create', async ( admin: IAdmin, { rejectWithValue } ) => {
+export const createAdmin = createAsyncThunk('admin/create', async ( admin: Admin, { rejectWithValue } ) => {
 	try {
 		const result = await AdminService.create(admin)
 		return result.data

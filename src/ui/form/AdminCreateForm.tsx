@@ -46,6 +46,7 @@ const AdminCreateForm = () => {
 	const fields = fieldsData(data)
 
 	const onFinish = ( data: any ) => {
+
 		dispatch(createAdmin(data))
 	}
 
