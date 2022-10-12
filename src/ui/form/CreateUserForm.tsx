@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Button, Checkbox, Form, Input } from 'antd'
 import fieldsData from '@utils/fieldsData'
 import { useAppSelector } from '@hook'
 import { drawer, permissions } from '@store'
 
-const { Item, List } = Form
+const { Item } = Form
 
 
 const CreateUserForm = () => {
@@ -12,7 +12,6 @@ const CreateUserForm = () => {
 	const { status, data: permission } = useAppSelector(permissions)
 	const fields = entity == 'update' ? fieldsData(data) : []
 	const [form] = Form.useForm()
-	const [checks, setCheks] = useState<any>()
 
 	const onfinish = ( data: any ) => {
 		console.log(data)

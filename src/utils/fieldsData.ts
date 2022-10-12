@@ -16,7 +16,6 @@ const fieldsData = ( data: any ) => {
 			})
 		}
 	})
-
 	return arr
 }
 

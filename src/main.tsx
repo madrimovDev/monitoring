@@ -1,24 +1,22 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App'
 import './index.less'
-import { BrowserRouter } from 'react-router-dom'
 import { SidebarProvider } from './provider'
 import { Provider } from 'react-redux'
 import { store } from '@store'
 import { verifyAction } from '@store/actions'
+import { RouterProvider } from 'react-router-dom'
+import { routes } from '@routes'
 
 const root = createRoot(document.getElementById('root') as HTMLElement)
 
-store.dispatch(verifyAction())
+// store.dispatch(verifyAction())
 
 const app = (
 	<Provider store={store}>
-		<BrowserRouter>
-			<SidebarProvider>
-				<App />
-			</SidebarProvider>
-		</BrowserRouter>
+		<SidebarProvider>
+			<RouterProvider router={routes} />
+		</SidebarProvider>
 	</Provider>
 )
 
