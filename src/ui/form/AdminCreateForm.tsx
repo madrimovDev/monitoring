@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Checkbox, CheckboxOptionType, Divider, Form, Input, Space } from 'antd'
+import { permissions } from '@store'
 
 const { Item } = Form
 
@@ -40,7 +41,12 @@ const AdminCreateForm = () => {
 		console.log(data)
 	}
 	return (
-		<Form form={form} onFinish={onFinish} layout={'vertical'}>
+		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={[
+			{
+				name: 'permissions',
+				value: ['admins', 'teachers']
+			}
+		]}>
 			<Item label={'Username'} name={'username'}>
 				<Input />
 			</Item>
@@ -52,7 +58,7 @@ const AdminCreateForm = () => {
 			</Item>
 			<Divider children={'Permissions'} />
 			<Item name={'permissions'}>
-				<Checkbox.Group defaultValue={['admins', 'teachers']} options={options} />
+				<Checkbox.Group options={options} />
 			</Item>
 			<Divider />
 			<Item>
