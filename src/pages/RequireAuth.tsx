@@ -6,7 +6,7 @@ import { auth } from '@store'
 const RequireAuth = () => {
 	const location = useLocation()
 	const { status } = useAppSelector(auth)
-	return status === 'FULFILLED' ? <Outlet /> : <Navigate to={'/login'} replace state={{ location: location }} />
+	return status === 'FULFILLED' ? <Outlet /> : <Navigate to={'/login'} replace state={{ from: location }} />
 }
 
 export default RequireAuth
