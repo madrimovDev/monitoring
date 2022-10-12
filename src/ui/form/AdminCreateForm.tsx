@@ -9,9 +9,10 @@ const AdminCreateForm = () => {
 			<Item label={'Username'} name={'username'}>
 				<Input/>
 			</Item>
-			<Item>
-
+			<Item label={'Password'} name={'password'}>
+				<Input/>
 			</Item>
+
 		</Form>
 	)
 }
