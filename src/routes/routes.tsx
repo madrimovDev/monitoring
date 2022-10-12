@@ -1,30 +1,25 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
-import { LoadingPage } from '@pages'
+import { lazy } from 'react'
+import SuspenseWithLoader from '@routes/SuspenseWithLoader'
+import appRoutes from '@routes/appRoutes'
 
 const Login = lazy(() => import('@pages/Login'))
 const RequireAuth = lazy(() => import('@pages/RequireAuth'))
 const Layout = lazy(() => import('@ui/layout/Layout'))
-const PageNotFound = lazy(() => import('@pages/PageNotFound'))
 
 const routes = createBrowserRouter([
 	{
 		path: '/login',
-		element: <Suspense fallback={<LoadingPage />} children={<Login />} />
+		element: <SuspenseWithLoader children={<Login />} />
 	},
 	{
 		path: '/',
-		element: <Suspense fallback={<LoadingPage />} children={<RequireAuth />} />,
+		element: <SuspenseWithLoader children={<RequireAuth />} />,
 		children: [
 			{
 				path: '/',
-				element: <Suspense fallback={<LoadingPage />} children={<Layout />} />,
-				children: [
-					{
-						path: '*',
-						element: <Suspense fallback={<LoadingPage />} children={<PageNotFound />} />
-					}
-				]
+				element: <SuspenseWithLoader children={<Layout />} />,
+				children: appRoutes
 			}
 		]
 	}

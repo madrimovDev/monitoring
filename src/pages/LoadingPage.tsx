@@ -6,7 +6,10 @@ const styles: CSSProperties = {
 	width: '100%',
 	display: 'flex',
 	justifyContent: 'space-between',
-	alignItems: 'center'
+	alignItems: 'center',
+	position: 'fixed',
+	top: 0,
+	left: 0
 }
 
 const LoadingPage = () => {
