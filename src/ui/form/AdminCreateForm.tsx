@@ -1,6 +1,8 @@
-import React from 'react'
-import { Button, Checkbox, CheckboxOptionType, Divider, Form, Input, Space } from 'antd'
-import { permissions } from '@store'
+import React, { useEffect } from 'react'
+import { Button, Checkbox, CheckboxOptionType, Divider, Form, Input } from 'antd'
+import { closeDrawer, drawer, permissions } from '@store'
+import { useAppDispatch, useAppSelector } from '@hook'
+import fieldsData from '@utils/fieldsData'
 
 const { Item } = Form
 
@@ -37,35 +39,69 @@ const options: CheckboxOptionType[] = [
 
 const AdminCreateForm = () => {
 	const [form] = Form.useForm()
+	const dispatch = useAppDispatch()
+	const { open, data } = useAppSelector(drawer)
+
+	const fields = fieldsData(data)
+
 	const onFinish = ( data: any ) => {
 		console.log(data)
+		form.resetFields()
+		dispatch(closeDrawer())
 	}
+
+	useEffect(() => {
+		if (!open) {
+			form.resetFields()
+		}
+	}, [open])
+
+
 	return (
-		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={[
-			{
-				name: 'permissions',
-				value: ['admins', 'teachers']
-			}
-		]}>
-			<Item label={'Username'} name={'username'}>
+		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={fields}>
+			<Item rules={[
+				{
+					required: true,
+					min: 3,
+					message: 'Username is required'
+				}
+			]} label={'Username'} name={'username'}>
 				<Input />
 			</Item>
-			<Item label={'Password'} name={'password'}>
+			<Item rules={[
+				{
+					required: true,
+					min: 3,
+					message: 'Password is required'
+				}
+			]} label={'Password'} name={'password'}>
 				<Input />
 			</Item>
-			<Item label={'Name'} name={'name'}>
+			<Item rules={[
+				{
+					required: true,
+					min: 3,
+					message: 'Name is required'
+				}
+			]} label={'Name'} name={'name'}>
 				<Input />
 			</Item>
 			<Divider children={'Permissions'} />
-			<Item name={'permissions'}>
-				<Checkbox.Group options={options} />
+			<Item rules={[
+				{
+					required: true,
+					message: 'Permissions is required'
+				}
+			]} name={'permissions'}>
+				<Checkbox.Group options={options} style={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(3, 1fr)',
+					gap: 20
+				}} />
 			</Item>
 			<Divider />
 			<Item>
-				<Space>
-					<Button htmlType={'submit'} type={'primary'}>Create</Button>
-					<Button danger htmlType={'reset'}>Reset</Button>
-				</Space>
+				<Button style={{ width: '100%' }} htmlType={'submit'} type={'primary'} size={'large'}>Create</Button>
 			</Item>
 		</Form>
 	)
