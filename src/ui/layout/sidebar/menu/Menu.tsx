@@ -1,57 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Menu as AntMenu, MenuProps } from 'antd'
-import {
-	ControlOutlined,
-	DashboardOutlined,
-	DatabaseOutlined,
-	GroupOutlined,
-	TeamOutlined,
-	UserOutlined
-} from '@ant-design/icons'
-import { Link, useLocation } from 'react-router-dom'
-
-type MenuItem = Required<MenuProps>['items'][number]
-
-function getItem(
-	label: React.ReactNode,
-	key: React.Key,
-	icon?: React.ReactNode,
-	children?: MenuItem[],
-	type?: 'group'
-): MenuItem {
-	return {
-		key,
-		icon,
-		children,
-		label,
-		type
-	} as MenuItem
-}
-
-const items: MenuProps['items'] = [
-	getItem(<Link to={'/'} children={'Dashboard'} />, '/', <DashboardOutlined style={{
-		fontSize: '20px'
-	}} />),
-	getItem(<Link to={'/admins'} children={'Admins'} />, '/admins', <ControlOutlined style={{
-		fontSize: '20px'
-	}} />),
-	getItem(<Link to={'/directions'} children={'Directions'} />, '/directions', <GroupOutlined style={{
-		fontSize: '20px'
-	}} />),
-	getItem(<Link to={'/teachers'} children={'Teachers'} />, '/teachers', <UserOutlined style={{
-		fontSize: '20px'
-	}} />),
-	getItem(<Link to={'/students'} children={'Students'} />, '/students', <TeamOutlined style={{
-		fontSize: '20px'
-	}} />),
-	getItem(<Link to={'/groups'} children={'Groups'} />, '/groups', <DatabaseOutlined style={{
-		fontSize: '20px'
-	}} />)
-]
+import { useLocation } from 'react-router-dom'
+import { useAppSelector } from '@hook'
+import { auth } from '@store'
+import { sidebarData } from '@utils'
+import { menuItems } from '@ui/layout/sidebar/menu/menuItems'
 
 const Menu = () => {
 	const { pathname } = useLocation()
 	const [currentPage, setCurrentPage] = useState<string>(pathname)
+	const { data: authData } = useAppSelector(auth)
+
+	const items = sidebarData(menuItems, authData?.permissions || [])
 
 	useEffect(() => {
 		setCurrentPage(pathname)

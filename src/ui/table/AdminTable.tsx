@@ -42,14 +42,14 @@ const AdminTable = () => {
 	}
 
 	return (
-		<Table size={'middle'} showHeader title={() => 'Admins'} dataSource={datas} rowKey={'key'}>
+		<Table size={'middle'} showHeader title={() => 'Admins'} dataSource={datas} rowKey={'id'}>
 			<Column title={'Name'} dataIndex={'name'} key={'name'} />
 			<Column title={'Permission'} dataIndex={'permissions'} key={'permissions'} render={( value: string[] ) => {
 				return (
 					<>
 						{
 							value.map(item => (
-								<Tag color={'blue'}>{item}</Tag>
+								<Tag key={item} color={'blue'}>{item}</Tag>
 							))
 						}
 					</>
