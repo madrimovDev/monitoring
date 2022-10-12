@@ -19,7 +19,7 @@ const routes = createBrowserRouter([
 			{
 				path: '/',
 				element: <SuspenseWithLoader children={<Layout />} />,
-				children: appRoutes
+				children: appRoutes,
 			}
 		]
 	}

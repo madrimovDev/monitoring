@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AdminDrawer, AdminTable } from '@ui'
 import { Button, Col, Divider, Row, Space } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { useAppDispatch } from '@hook'
 import { getPermissions, openDrawer } from '@store'
+import { getAllAdmins } from '@store/actions/adminsActions'
 
 const Admins = () => {
 	const dispatch = useAppDispatch()
@@ -15,6 +16,10 @@ const Admins = () => {
 		}))
 		dispatch(getPermissions())
 	}
+
+	useEffect(() => {
+		dispatch(getAllAdmins())
+	}, [])
 
 	return (
 		<>

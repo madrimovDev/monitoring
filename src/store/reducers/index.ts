@@ -1,4 +1,5 @@
 export { default as authReducer } from './authReducer'
-export { default as adminDrawerReducer } from './adminDrawerReducer'
+export { default as adminDrawerReducer } from './drawerReducer'
 export { default as dashboardReducer } from './dashboardReducer'
 export { default as permissionsReducer } from './permissionsReducer'
+export { default as adminReducer } from './adminReducer'

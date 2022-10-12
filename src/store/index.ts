@@ -12,5 +12,5 @@ export {
 } from './actions'
 
 export {
-	auth, permissions, dashboard, drawer
+	auth, permissions, dashboard, drawer, admins
 } from './selectors/selectors'
