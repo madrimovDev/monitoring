@@ -9,7 +9,7 @@ const initialState: AdminDrawerInitialState = {
 	data: null
 }
 
-const adminDrawerReducer = createReducer(initialState, builder => {
+const drawerReducer = createReducer(initialState, builder => {
 	builder
 	.addCase(openDrawer, ( state, action ) => {
 		state.open = true
@@ -23,4 +23,4 @@ const adminDrawerReducer = createReducer(initialState, builder => {
 	})
 })
 
-export default adminDrawerReducer
+export default drawerReducer

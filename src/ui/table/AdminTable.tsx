@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button, Space, Table, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
-import { useAppDispatch } from '@hook'
-import { getPermissions, openDrawer } from '@store'
+import { useAppDispatch, useAppSelector } from '@hook'
+import { admins, getPermissions, openDrawer } from '@store'
 import { nanoid } from 'nanoid'
 
 const { Column } = Table
@@ -31,6 +31,7 @@ const datas: DataType[] = new Array(5).fill(data).map(( item, index ) => ({
 
 const AdminTable = () => {
 	const dispatch = useAppDispatch()
+	const { status, data } = useAppSelector(admins)
 
 	const onEdit = ( record: DataType ) => {
 		dispatch(openDrawer({
@@ -42,7 +43,8 @@ const AdminTable = () => {
 	}
 
 	return (
-		<Table size={'middle'} showHeader title={() => 'Admins'} dataSource={datas} rowKey={'id'}>
+		<Table size={'middle'} showHeader title={() => 'Admins'} loading={status === 'PENDNIG'} dataSource={data || []}
+					 rowKey={'id'}>
 			<Column title={'Name'} dataIndex={'name'} key={'name'} />
 			<Column title={'Permission'} dataIndex={'permissions'} key={'permissions'} render={( value: string[] ) => {
 				return (

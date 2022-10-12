@@ -3,6 +3,7 @@ import { Button, Checkbox, CheckboxOptionType, Divider, Form, Input } from 'antd
 import { closeDrawer, drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
 import fieldsData from '@utils/fieldsData'
+import { createAdmin } from '@store/actions/adminsActions'
 
 const { Item } = Form
 
@@ -41,13 +42,11 @@ const AdminCreateForm = () => {
 	const [form] = Form.useForm()
 	const dispatch = useAppDispatch()
 	const { open, data } = useAppSelector(drawer)
-
+	const { status, data: permissionsData } = useAppSelector(permissions)
 	const fields = fieldsData(data)
 
 	const onFinish = ( data: any ) => {
-		console.log(data)
-		form.resetFields()
-		dispatch(closeDrawer())
+		dispatch(createAdmin(data))
 	}
 
 	useEffect(() => {
@@ -93,7 +92,7 @@ const AdminCreateForm = () => {
 					message: 'Permissions is required'
 				}
 			]} name={'permissions'}>
-				<Checkbox.Group options={options} style={{
+				<Checkbox.Group options={permissionsData?.permissions} style={{
 					display: 'grid',
 					gridTemplateColumns: 'repeat(3, 1fr)',
 					gap: 20
