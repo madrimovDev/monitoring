@@ -15,7 +15,7 @@ class AdminService {
 		return response
 	}
 
-	static async update( admin: IAdmin, id: number ) {
+	static async update( admin: Admin, id: number ) {
 		const response = await api.put<IAdmin>(`${this.base}/${id}`, admin)
 		return response
 	}
