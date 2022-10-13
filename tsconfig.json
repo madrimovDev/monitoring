@@ -51,12 +51,6 @@
       "@utils/*": [
         "./utils/*"
       ],
-      "@scheme": [
-        "./scheme"
-      ],
-      "@scheme/*": [
-        "./scheme/*"
-      ],
       "@routes/*": [
         "./routes/*"
       ],
