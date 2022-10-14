@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { TeacherService } from '@services'
 
 const Teachers = () => {
+	useEffect(() => {
+		TeacherService.getAll()
+	}, [])
 	return (
 		<div>
-			
+
 		</div>
 	)
 }

@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
 
+
 const { Content } = AntLayout
 
 const Layout = () => {
@@ -11,7 +12,7 @@ const Layout = () => {
 		<AntLayout style={{ height: '100vh', overflow: 'hidden' }}>
 			<Sidebar />
 			<Content style={{ overflow: 'auto' }}>
-				<Header/>
+				<Header />
 				<Row>
 					<Col span={22} offset={1}>
 						<Outlet />

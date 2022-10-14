@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Form as AntForm, Input } from 'antd'
 import { useAppDispatch, useAppSelector } from '../../hook'
-import { loginAction } from '../../store/actions'
+import { loginAction } from '@store/actions'
+import { LoginUserType } from '@services/types/authType'
 
 const { Item } = AntForm
 
@@ -10,7 +11,7 @@ const Form = () => {
 	const { status } = useAppSelector(state => state.auth)
 	const dispatch = useAppDispatch()
 
-	const finish = ( e: any ) => {
+	const finish = ( e: LoginUserType ) => {
 		dispatch(loginAction({
 			username: e.username,
 			password: e.password

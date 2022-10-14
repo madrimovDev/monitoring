@@ -1,6 +1,11 @@
-export type Status = 'PENDNIG' | 'FULFILLED' | 'REJECTED' | 'DEFAULT'
+import { ResponseErrorMapperType } from '@mapper/responseErrorMapper'
+
+export type Status = 'PENDING' | 'FULFILLED' | 'REJECTED' | 'DEFAULT'
 
 export interface InitialState<T> {
 	status: Status
-	data: T | null
+	data: T
+	message: string
+	error: boolean
+	errorMessage: ResponseErrorMapperType | null
 }

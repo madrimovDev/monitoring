@@ -1,4 +1,4 @@
-import { LazyExoticComponent, ReactNode, Suspense } from 'react'
+import { lazy, ReactNode, Suspense } from 'react'
 import { LoadingPage } from '@pages'
 
 interface SuspenseWithLoaderPropsType {
@@ -7,7 +7,7 @@ interface SuspenseWithLoaderPropsType {
 
 const SuspenseWithLoader = ( { children }: SuspenseWithLoaderPropsType ) => {
 	return <Suspense fallback={<LoadingPage />}>
-		{ children }
+		{children}
 	</Suspense>
 }
 export default SuspenseWithLoader

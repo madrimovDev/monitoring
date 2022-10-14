@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import DashboardService from '../../services/dashboardService'
-import { responseErrorMapper } from '../../mapper'
+import { DashboardService } from '@services'
+import { responseErrorMapper } from '@mapper'
 import { AxiosError } from 'axios'
 
 export const getDashboard = createAsyncThunk('dashboard/fetch', async ( _, { rejectWithValue } ) => {

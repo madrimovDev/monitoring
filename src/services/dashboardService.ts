@@ -1,9 +1,9 @@
 import api from '@api'
-import { IDashboard } from '@store/types/dashboardTypes'
+import { DashboardResponseType } from './types/dashboardTypes'
 
 class DashboardService{
 	static async get(){
-		const response = await api.get<IDashboard>('/dashboard')
+		const response = await api.get<DashboardResponseType>('/dashboard')
 		return response
 	}
 }

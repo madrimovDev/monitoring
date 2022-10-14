@@ -1,4 +1,4 @@
-import { AuthResponseType } from '../services/types/authResponseType'
+import { AuthResponseType } from '@services/types/authType'
 
 const authResponseMapper = ( user: AuthResponseType ) => {
 	return {

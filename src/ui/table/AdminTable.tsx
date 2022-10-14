@@ -3,7 +3,6 @@ import { Button, Space, Table, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { admins, getPermissions, openDrawer } from '@store'
-import { nanoid } from 'nanoid'
 import { deleteAdmin } from '@store/actions/adminsActions'
 
 const { Column } = Table
@@ -15,20 +14,6 @@ interface DataType {
 	password: string
 	permissions: string[]
 }
-
-const data: DataType = {
-	name: 'Admin',
-	id: nanoid(),
-	username: 'username',
-	password: 'password',
-	permissions: ['groups', 'teachers', 'students', 'directions']
-}
-
-const datas: DataType[] = new Array(5).fill(data).map(( item, index ) => ({
-	...item,
-	id: item.id + nanoid(),
-	name: item.name + ' ' + (index + 1)
-}))
 
 const AdminTable = () => {
 	const dispatch = useAppDispatch()
@@ -48,7 +33,7 @@ const AdminTable = () => {
 	}
 
 	return (
-		<Table size={'middle'} showHeader title={() => 'Admins'} loading={status === 'PENDNIG'} dataSource={data || []}
+		<Table size={'middle'} showHeader title={() => 'Admins'} loading={status === 'PENDING'} dataSource={data || []}
 					 rowKey={'id'}>
 			<Column title={'Name'} dataIndex={'name'} key={'name'} />
 			<Column title={'Permission'} dataIndex={'permissions'} key={'permissions'} render={( value: string[] ) => {
@@ -62,7 +47,7 @@ const AdminTable = () => {
 					</>
 				)
 			}} />
-			<Column title={'Action'} key={'action'} render={( value, record, index ) => (
+			<Column title={'Action'} key={'action'} render={( value ) => (
 				<Space>
 					<Button onClick={() => onEdit(value)} size={'small'} type={'primary'}
 									icon={<EditFilled />}>Edit</Button>

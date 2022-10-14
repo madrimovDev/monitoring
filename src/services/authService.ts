@@ -1,9 +1,8 @@
 import api from '@api'
-import { AuthResponseType } from './types/authResponseType'
-import UserType from '@store/types/userType'
+import { AuthResponseType, LoginUserType } from './types/authType'
 
 class AuthService {
-	static async login( user: UserType ) {
+	static async login( user: LoginUserType ) {
 		const response = await api.post<AuthResponseType>('/auth/login', {
 			username: user.username,
 			password: user.password

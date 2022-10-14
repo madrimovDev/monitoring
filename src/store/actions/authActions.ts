@@ -2,9 +2,9 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { AuthService } from '@services'
 import { authResponseMapper, responseErrorMapper } from '@mapper'
 import { AxiosError } from 'axios'
-import UserType from '@store/types/userType'
+import { LoginUserType } from '@services/types/authType'
 
-export const loginAction = createAsyncThunk('auth/login', async ( user: UserType, { rejectWithValue } ) => {
+export const loginAction = createAsyncThunk('auth/login', async ( user: LoginUserType, { rejectWithValue } ) => {
 	try {
 		const result = await AuthService.login(user)
 		return authResponseMapper(result.data)

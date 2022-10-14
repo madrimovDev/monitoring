@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Button, Checkbox, Divider, Form, Input } from 'antd'
-import { drawer, permissions } from '@store'
+import { admins, closeDrawer, drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
-import fieldsData from '@utils/fieldsData'
+import { fieldsData, notification } from '@utils'
 import { createAdmin, updateAdmin } from '@store/actions/adminsActions'
 
 const { Item } = Form
@@ -11,18 +11,20 @@ const { Item } = Form
 const AdminCreateForm = () => {
 	const [form] = Form.useForm()
 	const dispatch = useAppDispatch()
-	const { open, data, entity } = useAppSelector(drawer)
-	const { status, data: permissionsData } = useAppSelector(permissions)
-	const fields = fieldsData(data)
+
+	const { open, data: drawerData, entity } = useAppSelector(drawer)
+	const { data: permissionsData } = useAppSelector(permissions)
+	const { status, message, errorMessage, error } = useAppSelector(admins)
+
+	const fields = fieldsData(drawerData)
 
 	const onFinish = ( formData: any ) => {
-		if (entity === 'create') {
+		if (entity === 'create' && !drawerData) {
 			dispatch(createAdmin(formData))
 		} else {
-			console.log()
 			dispatch(updateAdmin({
 				admin: formData,
-				id: data?.id || 0
+				id: drawerData?.id || 0
 			}))
 		}
 	}
@@ -32,6 +34,8 @@ const AdminCreateForm = () => {
 			form.resetFields()
 		}
 	}, [open])
+
+
 
 
 	return (
@@ -47,8 +51,8 @@ const AdminCreateForm = () => {
 			</Item>
 			<Item rules={[
 				{
-					required: true,
-					min: 3,
+					required: entity === 'create',
+					min: entity === 'create' ? 3 : undefined,
 					message: 'Password is required'
 				}
 			]} label={'Password'} name={'password'}>

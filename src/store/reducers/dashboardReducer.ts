@@ -1,10 +1,13 @@
 import { InitialState } from '@store/types/types'
-import { IDashboard } from '@store/types/dashboardTypes'
 import { createReducer } from '@reduxjs/toolkit'
 import { getDashboard } from '@store/actions'
+import { DashboardResponseType } from '@services/types/dashboardTypes'
 
-const initialState: InitialState<IDashboard> = {
+const initialState: InitialState<DashboardResponseType> = {
 	status: 'FULFILLED',
+	message: '',
+	errorMessage: null,
+	error: false,
 	data: {
 		students: 500,
 		groups: 50,
@@ -47,13 +50,13 @@ const initialState: InitialState<IDashboard> = {
 
 const dashboardReducer = createReducer(initialState, builder => {
 	builder.addCase(getDashboard.pending, ( state ) => {
-		state.status = 'PENDNIG'
+		state.status = 'PENDING'
 	})
 	.addCase(getDashboard.fulfilled, ( state, action ) => {
 		state.status = 'FULFILLED'
 		state.data = action.payload
 	})
-	.addCase(getDashboard.rejected, ( state, action ) => {
+	.addCase(getDashboard.rejected, ( state ) => {
 		state.status = 'REJECTED'
 	})
 })
