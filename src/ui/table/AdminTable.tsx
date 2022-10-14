@@ -3,7 +3,6 @@ import { Button, Space, Table, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { admins, getPermissions, openDrawer } from '@store'
-import { nanoid } from 'nanoid'
 import { deleteAdmin } from '@store/actions/adminsActions'
 
 const { Column } = Table

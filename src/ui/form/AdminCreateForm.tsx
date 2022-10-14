@@ -36,18 +36,7 @@ const AdminCreateForm = () => {
 	}, [open])
 
 
-	useEffect(() => {
-		if (error && status === 'REJECTED') {
-			return notification('error', errorMessage?.status, errorMessage?.message)
-		}
-		if (!error && status === 'FULFILLED') {
-			notification('success', message)
-			setTimeout(() => {
-				dispatch(closeDrawer())
-			}, 500)
-			return
-		}
-	}, [error, status])
+
 
 	return (
 		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={fields}>
