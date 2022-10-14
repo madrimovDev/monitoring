@@ -1,11 +1,12 @@
 import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
-import SuspenseWithLoader from '@routes/SuspenseWithLoader'
+import SuspenseWithLoader, { lazyPage } from '@routes/SuspenseWithLoader'
 
-const Dashboard = lazy(() => import('@pages/Dashboard'))
-const Admins = lazy(() => import('@pages/Admins'))
-const Teachers = lazy(() => import('@pages/Teachers'))
-const PageNotFound = lazy(() => import('@pages/PageNotFound'))
+
+const Dashboard = lazyPage('@pages/Dashboard')
+const Admins = lazyPage('@pages/Admins')
+const Teachers = lazyPage('@pages/Teachers')
+const PageNotFound = lazyPage('@pages/PageNotFound')
 
 const appRoutes: RouteObject[] = [
 	{
