@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Button, Checkbox, Divider, Form, Input } from 'antd'
 import { drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
-import fieldsData from '@utils/fieldsData'
+import { fieldsData } from '@utils'
 import { createAdmin, updateAdmin } from '@store/actions/adminsActions'
 
 const { Item } = Form
@@ -16,10 +16,9 @@ const AdminCreateForm = () => {
 	const fields = fieldsData(data)
 
 	const onFinish = ( formData: any ) => {
-		if (entity === 'create') {
+		if (entity === 'create' && !data) {
 			dispatch(createAdmin(formData))
 		} else {
-			console.log()
 			dispatch(updateAdmin({
 				admin: formData,
 				id: data?.id || 0
