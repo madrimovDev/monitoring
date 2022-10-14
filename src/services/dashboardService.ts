@@ -1,5 +1,5 @@
 import api from '@api'
-import { IDashboard } from '@store/types/dashboardTypes'
+import { IDashboard } from './types/dashboardTypes'
 
 class DashboardService{
 	static async get(){

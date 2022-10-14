@@ -1,13 +1,11 @@
-import AuthInitialStateType from '../types/authTypes'
 import { createReducer } from '@reduxjs/toolkit'
 import { loginAction, logoutAction, verifyAction } from '../actions'
+import { InitialState } from '@store/types/types'
+import { UserMappedType } from '@mapper/authResponseMapper'
 
-const initialState: AuthInitialStateType = {
-	status: 'FULFILLED',
-	data: {
-		username: 'root',
-		permissions: []
-	}
+const initialState: InitialState<UserMappedType | null> = {
+	status: 'DEFAULT',
+	data: null
 }
 
 const authReducer = createReducer(initialState, builder => {
@@ -22,7 +20,6 @@ const authReducer = createReducer(initialState, builder => {
 	.addCase(loginAction.rejected, ( state, action ) => {
 		state.status = 'REJECTED'
 		state.data = null
-		state.error = action.error.message
 	}).addCase(verifyAction.pending, ( state ) => {
 		state.status = 'PENDING'
 	})
@@ -33,12 +30,10 @@ const authReducer = createReducer(initialState, builder => {
 	.addCase(verifyAction.rejected, ( state, action ) => {
 		state.status = 'REJECTED'
 		state.data = null
-		state.error = action.error.message
 	})
 	.addCase(logoutAction, ( state, action ) => {
 		state.status = 'DEFAULT'
 		state.data = null
-		state.error = ''
 		localStorage.removeItem('accessToken')
 	})
 })

@@ -1,10 +1,11 @@
 import api from '@api'
+import { PermissionsResponseType } from './types/permissionsTypes'
 
-class PermissonService {
+class PermissionService {
 	static async get() {
-		const response = api.get<{ message: string, permissions: string[] }>('/permissions')
+		const response = api.get<PermissionsResponseType>('/permissions')
 		return response
 	}
 }
 
-export default PermissonService
+export default PermissionService

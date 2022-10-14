@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AdminService } from '@services'
 import { responseErrorMapper } from '@mapper'
 import { AxiosError } from 'axios'
-import { Admin } from '@services/types/adminResponseTypes'
+import { Admin } from '@services/types/adminTypes'
 
 export const getAllAdmins = createAsyncThunk('admin/getAll', async ( _, { rejectWithValue } ) => {
 	try {

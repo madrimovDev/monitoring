@@ -1,5 +1,5 @@
 import api from '@api'
-import { IAdmin, IAdmins, Admin } from '@services/types/adminResponseTypes'
+import { IAdmin, IAdmins, Admin } from '@services/types/adminTypes'
 
 class AdminService {
 	private static base = '/admins'

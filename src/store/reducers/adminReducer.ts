@@ -1,9 +1,9 @@
 import { InitialState } from '@store/types/types'
-import { Admin } from '@services/types/adminResponseTypes'
+import { Admin } from '@services/types/adminTypes'
 import { createReducer } from '@reduxjs/toolkit'
 import { createAdmin, deleteAdmin, getAllAdmins, updateAdmin } from '@store/actions/adminsActions'
 
-const initialState: InitialState<Admin[]> = {
+const initialState: InitialState<Admin[] | null> = {
 	status: 'DEFAULT',
 	data: null
 }
@@ -11,7 +11,7 @@ const initialState: InitialState<Admin[]> = {
 const adminReducer = createReducer(initialState, builder => {
 	builder
 	.addCase(createAdmin.pending, ( state ) => {
-		state.status = 'PENDNIG'
+		state.status = 'PENDING'
 	})
 	.addCase(createAdmin.fulfilled, ( state, action ) => {
 		state.status = 'FULFILLED'
@@ -22,7 +22,7 @@ const adminReducer = createReducer(initialState, builder => {
 		console.log(action.payload)
 	})
 	.addCase(getAllAdmins.pending, ( state ) => {
-		state.status = 'PENDNIG'
+		state.status = 'PENDING'
 	})
 	.addCase(getAllAdmins.fulfilled, ( state, action ) => {
 		state.status = 'FULFILLED'
@@ -33,7 +33,7 @@ const adminReducer = createReducer(initialState, builder => {
 		console.log(action.payload)
 	})
 	.addCase(updateAdmin.pending, ( state ) => {
-		state.status = 'PENDNIG'
+		state.status = 'PENDING'
 	})
 	.addCase(updateAdmin.fulfilled, ( state, action ) => {
 		state.status = 'FULFILLED'
@@ -51,7 +51,7 @@ const adminReducer = createReducer(initialState, builder => {
 		console.log(action.payload)
 	})
 	.addCase(deleteAdmin.pending, ( state ) => {
-		state.status = 'PENDNIG'
+		state.status = 'PENDING'
 	})
 	.addCase(deleteAdmin.fulfilled, ( state, action ) => {
 		state.status = 'FULFILLED'

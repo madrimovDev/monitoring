@@ -1,4 +1,4 @@
-import { Admin } from '@services/types/adminResponseTypes'
+import { Admin } from '@services/types/adminTypes'
 
 interface AdminDrawerInitialState {
 	open: boolean
