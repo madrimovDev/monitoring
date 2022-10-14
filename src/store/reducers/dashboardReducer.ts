@@ -5,6 +5,9 @@ import { DashboardResponseType } from '@services/types/dashboardTypes'
 
 const initialState: InitialState<DashboardResponseType> = {
 	status: 'FULFILLED',
+	message: '',
+	errorMessage: null,
+	error: fasle,
 	data: {
 		students: 500,
 		groups: 50,
