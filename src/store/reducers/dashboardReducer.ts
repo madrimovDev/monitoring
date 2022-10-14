@@ -7,7 +7,7 @@ const initialState: InitialState<DashboardResponseType> = {
 	status: 'FULFILLED',
 	message: '',
 	errorMessage: null,
-	error: fasle,
+	error: false,
 	data: {
 		students: 500,
 		groups: 50,
@@ -56,7 +56,7 @@ const dashboardReducer = createReducer(initialState, builder => {
 		state.status = 'FULFILLED'
 		state.data = action.payload
 	})
-	.addCase(getDashboard.rejected, ( state, action ) => {
+	.addCase(getDashboard.rejected, ( state ) => {
 		state.status = 'REJECTED'
 	})
 })
