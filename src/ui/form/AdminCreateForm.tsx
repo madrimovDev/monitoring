@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Button, Checkbox, Divider, Form, Input } from 'antd'
-import { drawer, permissions } from '@store'
+import { admins, closeDrawer, drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
-import { fieldsData } from '@utils'
+import { fieldsData, notification } from '@utils'
 import { createAdmin, updateAdmin } from '@store/actions/adminsActions'
 
 const { Item } = Form
@@ -11,17 +11,20 @@ const { Item } = Form
 const AdminCreateForm = () => {
 	const [form] = Form.useForm()
 	const dispatch = useAppDispatch()
-	const { open, data, entity } = useAppSelector(drawer)
-	const { status, data: permissionsData } = useAppSelector(permissions)
-	const fields = fieldsData(data)
+
+	const { open, data: drawerData, entity } = useAppSelector(drawer)
+	const { data: permissionsData } = useAppSelector(permissions)
+	const { status, message, errorMessage, error } = useAppSelector(admins)
+
+	const fields = fieldsData(drawerData)
 
 	const onFinish = ( formData: any ) => {
-		if (entity === 'create' && !data) {
+		if (entity === 'create' && !drawerData) {
 			dispatch(createAdmin(formData))
 		} else {
 			dispatch(updateAdmin({
 				admin: formData,
-				id: data?.id || 0
+				id: drawerData?.id || 0
 			}))
 		}
 	}
@@ -32,6 +35,19 @@ const AdminCreateForm = () => {
 		}
 	}, [open])
 
+
+	useEffect(() => {
+		if (error && status === 'REJECTED') {
+			return notification('error', errorMessage?.status, errorMessage?.message)
+		}
+		if (!error && status === 'FULFILLED') {
+			notification('success', message)
+			setTimeout(() => {
+				dispatch(closeDrawer())
+			}, 500)
+			return
+		}
+	}, [error, status])
 
 	return (
 		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={fields}>

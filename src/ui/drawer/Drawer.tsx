@@ -2,7 +2,7 @@ import React from 'react'
 import { Drawer as AntDrawer } from 'antd'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { closeDrawer } from '@store/actions'
-import { drawer } from '@store/selectors/selectors'
+import { admins, drawer } from '@store'
 import AdminCreateForm from '@ui/form/AdminCreateForm'
 
 const Drawer = () => {
