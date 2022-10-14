@@ -5,7 +5,10 @@ import { PermissionsResponseType } from '@services/types/permissionsTypes'
 
 const initialState: InitialState<PermissionsResponseType | null> = {
 	status: 'DEFAULT',
-	data: null
+	data: null,
+	error: false,
+	errorMessage: null,
+	message: ''
 }
 
 const permissionsReducer = createReducer(initialState, builder => {

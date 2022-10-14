@@ -5,7 +5,11 @@ import { UserMappedType } from '@mapper/authResponseMapper'
 
 const initialState: InitialState<UserMappedType | null> = {
 	status: 'DEFAULT',
-	data: null
+	data: null,
+	message: '',
+	errorMessage: null,
+	error: false
+
 }
 
 const authReducer = createReducer(initialState, builder => {

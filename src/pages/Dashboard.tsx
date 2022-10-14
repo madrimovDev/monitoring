@@ -24,10 +24,10 @@ const Dashboard = () => {
 
 				{data && (
 					<>
-						<DashboardStatistics loading={status === 'PENDNIG'} title={'Directions'} count={data?.directions.length} />
-						<DashboardStatistics loading={status === 'PENDNIG'} title={'Students'} count={data?.students} />
-						<DashboardStatistics loading={status === 'PENDNIG'} title={'Teachers'} count={data?.teachers} />
-						<DashboardStatistics loading={status === 'PENDNIG'} title={'Groups'} count={data?.groups} />
+						<DashboardStatistics loading={status === 'PENDING'} title={'Directions'} count={data?.directions.length} />
+						<DashboardStatistics loading={status === 'PENDING'} title={'Students'} count={data?.students} />
+						<DashboardStatistics loading={status === 'PENDING'} title={'Teachers'} count={data?.teachers} />
+						<DashboardStatistics loading={status === 'PENDING'} title={'Groups'} count={data?.groups} />
 					</>
 				)}
 			</Row>
