@@ -47,8 +47,8 @@ const AdminCreateForm = () => {
 			</Item>
 			<Item rules={[
 				{
-					required: true,
-					min: 3,
+					required: entity === 'create',
+					min: entity === 'create' ? 3 : undefined,
 					message: 'Password is required'
 				}
 			]} label={'Password'} name={'password'}>
