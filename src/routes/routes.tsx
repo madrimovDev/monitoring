@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom'
-import SuspenseWithLoader, { lazyPage } from '@routes/SuspenseWithLoader'
+import { lazy } from 'react'
+import SuspenseWithLoader from '@routes/SuspenseWithLoader'
 import appRoutes from '@routes/appRoutes'
 
-const Login = lazyPage('@pages/Login')
-const RequireAuth = lazyPage('@pages/RequireAuth')
-const Layout = lazyPage('@ui/layout/Layout')
+const Login = lazy(() => import('@pages/Login'))
+const RequireAuth = lazy(() => import('@pages/RequireAuth'))
+const Layout = lazy(() => import('@ui/layout/Layout'))
 
 const routes = createBrowserRouter([
 	{

@@ -4,12 +4,6 @@ const api = axios
 
 api.defaults.baseURL = import.meta.env.VITE_BASE_URL
 
-interface AxiosResponseType {
-	username: string
-	permissoon: []
-	token: string
-}
-
 api.interceptors.request.use(( config ) => {
 	if (!config?.headers) {
 		throw new Error(`Expected 'config' and 'config.headers' not to be undefined`)
