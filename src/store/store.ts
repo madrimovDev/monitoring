@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { adminDrawerReducer, adminReducer, authReducer, dashboardReducer, permissionsReducer } from './reducers'
+import teachersReducer from '@store/reducers/teachersReducer'
 
 const store = configureStore({
 	reducer: {
@@ -7,7 +8,8 @@ const store = configureStore({
 		adminDrawer: adminDrawerReducer,
 		dashboard: dashboardReducer,
 		permissions: permissionsReducer,
-		admins: adminReducer
+		admins: adminReducer,
+		teachers: teachersReducer
 	}
 })
 

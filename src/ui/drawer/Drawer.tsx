@@ -2,8 +2,9 @@ import React from 'react'
 import { Drawer as AntDrawer } from 'antd'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { closeDrawer } from '@store/actions'
-import { admins, drawer } from '@store'
+import { drawer } from '@store'
 import AdminCreateForm from '@ui/form/AdminCreateForm'
+import TeacherCreateForm from '@ui/form/TeacherCreateForm'
 
 const Drawer = () => {
 	const { open, type, entity } = useAppSelector(drawer)
@@ -15,6 +16,9 @@ const Drawer = () => {
 							 open={open}>
 			{
 				type === 'admin' && <AdminCreateForm />
+			}
+			{
+				type === 'teacher' && <TeacherCreateForm />
 			}
 		</AntDrawer>
 	)

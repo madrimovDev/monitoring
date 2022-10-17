@@ -3,7 +3,6 @@ export { adminDrawerReducer, authReducer, dashboardReducer, permissionsReducer }
 export {
 	openDrawer,
 	closeDrawer,
-	openWithPayload,
 	getPermissions,
 	verifyAction,
 	logoutAction,
@@ -12,5 +11,5 @@ export {
 } from './actions'
 
 export {
-	auth, permissions, dashboard, drawer, admins
+	auth, permissions, dashboard, drawer, admins, teachers
 } from './selectors/selectors'
