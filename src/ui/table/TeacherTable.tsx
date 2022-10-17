@@ -13,11 +13,11 @@ const TeacherTable = () => {
 	const { status, data } = useAppSelector(teachers)
 	const dispatch = useAppDispatch()
 
-	const onEdit = ( _data: any ) => {
+	const onEdit = ( d: any ) => {
 		dispatch(openDrawer({
 			type: 'teacher',
 			entity: 'update',
-			data: _data
+			data: d
 		}))
 	}
 
@@ -54,10 +54,10 @@ const TeacherTable = () => {
 									})
 								)
 							}} />
-			<Column title={'Actions'} key={'actions'} render={( value ) => {
+			<Column title={'Action'} key={'action'} render={( value ) => {
 				return (
 					<Space>
-						<Button onClick={onEdit} size={'small'} type={'primary'} icon={<EditFilled />}>Edit</Button>
+						<Button onClick={() => onEdit(value)} size={'small'} type={'primary'} icon={<EditFilled />}>Edit</Button>
 						<Button size={'small'} danger icon={<DeleteFilled />}>Delete</Button>
 					</Space>
 				)
