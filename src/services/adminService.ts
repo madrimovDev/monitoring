@@ -5,24 +5,20 @@ class AdminService {
 	private static base = '/admins'
 
 	static async getAll() {
-		const response = await api.get<AdminsResponse>(this.base)
-		return response
+		return await api.get<AdminsResponse>(this.base)
 	}
 
 
 	static async create( admin: Admin ) {
-		const response = await api.post<AdminResponse>(this.base, admin)
-		return response
+		return await api.post<AdminResponse>(this.base, admin)
 	}
 
 	static async update( admin: Admin, id: number ) {
-		const response = await api.put<AdminsResponse>(`${this.base}/${id}`, admin)
-		return response
+		return await api.put<AdminResponse>(`${this.base}/${id}`, admin)
 	}
 
 	static async del(id: number){
-		const response = await api.delete<AdminResponse>(`${this.base}/${id}`)
-		return response
+		return await api.delete<AdminResponse>(`${this.base}/${id}`)
 	}
 }
 
