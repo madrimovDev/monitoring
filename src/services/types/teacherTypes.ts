@@ -18,14 +18,12 @@ export interface NewTeacher {
 	directions: number[];
 }
 
-interface TeachersResponse {
+export interface TeachersResponse {
 	message: string
-}
-
-export interface ITeachers extends TeachersResponse{
 	teachers: Teacher[]
 }
 
-export interface ITeacher extends TeachersResponse{
+export interface TeacherResponse {
+	message: string
 	teacher: Teacher
 }

@@ -7,6 +7,6 @@ const responseErrorMapper = ( error: AxiosError<{ message: string }> ) => {
 	}
 }
 
-export type ResponseErrorMapperType  =ReturnType<typeof responseErrorMapper>
+export type ResponseErrorMapperType  = ReturnType<typeof responseErrorMapper>
 
 export default responseErrorMapper
