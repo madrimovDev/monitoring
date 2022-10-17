@@ -3,7 +3,6 @@ export { adminDrawerReducer, authReducer, dashboardReducer, permissionsReducer }
 export {
 	openDrawer,
 	closeDrawer,
-	openWithPayload,
 	getPermissions,
 	verifyAction,
 	logoutAction,

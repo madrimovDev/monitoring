@@ -3,6 +3,7 @@ export interface Teacher {
 	name: string;
 	userId: number;
 	surname: string;
+	birthday: string;
 	username: string;
 	permissions: string[];
 	role: string;
