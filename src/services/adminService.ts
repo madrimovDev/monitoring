@@ -1,28 +1,24 @@
 import api from '@api'
-import { IAdmin, IAdmins, Admin } from '@services/types/adminTypes'
+import { Admin, AdminResponse, AdminsResponse } from '@services/types/adminTypes'
 
 class AdminService {
 	private static base = '/admins'
 
 	static async getAll() {
-		const response = await api.get<IAdmins>(this.base)
-		return response
+		return await api.get<AdminsResponse>(this.base)
 	}
 
 
 	static async create( admin: Admin ) {
-		const response = await api.post<IAdmin>(this.base, admin)
-		return response
+		return await api.post<AdminResponse>(this.base, admin)
 	}
 
 	static async update( admin: Admin, id: number ) {
-		const response = await api.put<IAdmin>(`${this.base}/${id}`, admin)
-		return response
+		return await api.put<AdminResponse>(`${this.base}/${id}`, admin)
 	}
 
 	static async del(id: number){
-		const response = await api.delete<IAdmin>(`${this.base}/${id}`)
-		return response
+		return await api.delete<AdminResponse>(`${this.base}/${id}`)
 	}
 }
 

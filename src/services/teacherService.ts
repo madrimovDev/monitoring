@@ -1,36 +1,40 @@
 import api from '@api'
+import { NewTeacher, TeacherResponse, TeachersResponse } from '@services/types/teacherTypes'
+import { GroupsResponse } from '@services/types/groupsTypes'
+import { DirectionResponse, DirectionsResponse } from '@services/types/directionsTypes'
 
-/*
- *     "username": "neowise",
- "password": "1234",
- "name": "Jalol",
- "surname": "Imomaddinov",
- "birthday": "08-09-1997",
- "phone": "99899565121"
- *
- * */
-
-export interface Teacher {
-	username: string
-	password: string
-	name: string
-	surname: string,
-	birthday: Date
-	phone: string
-	directions: string[]
-}
 
 class TeacherService {
 	private static base = '/teachers'
 
 	static async getAll() {
-		const response = await api.get(this.base)
-		return response
+		return await api.get<TeachersResponse>(this.base)
 	}
 
-	static async create( teacher: Teacher ) {
-		const response = await api.post(this.base, teacher)
-		return response
+	static async create( teacher: NewTeacher ) {
+		return await api.post<TeacherResponse>(this.base, teacher)
+	}
+
+	static async update( id: number, teacher: NewTeacher ) {
+		return await api.put<TeacherResponse>(`${this.base}/${id}`, teacher)
+	}
+
+	static async del( id: number ) {
+		return await api.delete<TeacherResponse>(`${this.base}/${id}`)
+	}
+
+	static async getGroups( id: number ) {
+		return await api.get<GroupsResponse>(`${this.base}/${id}/groups`)
+	}
+
+	static async getDirections( id: number ) {
+		return await api.get<DirectionsResponse>(`${this.base}/${id}/directions`)
+	}
+
+	static async addDirection( id: number, directionId: number ) {
+		return await api.post<DirectionResponse>(`${this.base}/${id}/directions`, {
+			directionId
+		})
 	}
 }
 

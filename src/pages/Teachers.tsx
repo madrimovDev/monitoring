@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react'
-import { TeacherService } from '@services'
+import React from 'react'
 
 const Teachers = () => {
-	useEffect(() => {
-		TeacherService.getAll()
-	}, [])
 	return (
 		<div>
 

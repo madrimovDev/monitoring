@@ -34,7 +34,7 @@ export const updateAdmin = createAsyncThunk('admin/update', async ( {
 	}
 })
 
-export const deleteAdmin = createAsyncThunk('admin/delete', async (id: number, {rejectWithValue}) => {
+export const deleteAdmin = createAsyncThunk('admin/delete', async ( id: number, { rejectWithValue } ) => {
 	try {
 		const result = await AdminService.del(id)
 		return result.data
