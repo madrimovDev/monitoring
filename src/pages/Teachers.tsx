@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react'
-import { TeacherService } from '@services'
+import { useAppDispatch } from '@hook'
+import { getAllTeachers } from '@store/actions/teachersActions'
 
 const Teachers = () => {
-
+	const dispatch = useAppDispatch()
+	useEffect(() => {
+		dispatch(getAllTeachers())
+	}, [])
 	return (
 		<div>
 

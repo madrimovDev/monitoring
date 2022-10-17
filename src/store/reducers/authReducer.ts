@@ -42,7 +42,7 @@ const authReducer = createReducer(initialState, builder => {
 		state.data = null
 		state.response = errorHandler(true, action.payload.message)
 	})
-	.addCase(logoutAction, ( state, action ) => {
+	.addCase(logoutAction, ( state) => {
 		state.status = 'DEFAULT'
 		state.data = null
 		localStorage.removeItem('accessToken')
