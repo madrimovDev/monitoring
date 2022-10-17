@@ -1,36 +1,28 @@
 import api from '@api'
+import { ITeacher, ITeachers, NewTeacher } from '@services/types/teacherTypes'
 
-/*
- *     "username": "neowise",
- "password": "1234",
- "name": "Jalol",
- "surname": "Imomaddinov",
- "birthday": "08-09-1997",
- "phone": "99899565121"
- *
- * */
-
-export interface Teacher {
-	username: string
-	password: string
-	name: string
-	surname: string,
-	birthday: Date
-	phone: string
-	directions: string[]
-}
 
 class TeacherService {
 	private static base = '/teachers'
 
 	static async getAll() {
-		const response = await api.get(this.base)
-		return response
+		return await api.get<ITeachers>(this.base)
 	}
 
-	static async create( teacher: Teacher ) {
-		const response = await api.post(this.base, teacher)
-		return response
+	static async create( teacher: NewTeacher ) {
+		return await api.post<ITeacher>(this.base, teacher)
+	}
+
+	static async update( id: number, teacher: NewTeacher ) {
+		return await api.put<ITeacher>(`${this.base}/${id}`, teacher)
+	}
+
+	static async del(id: number){
+		return await api.delete<ITeacher>(`${this.base}/${id}`)
+	}
+
+	static async getGroups(id:number){
+		return await api
 	}
 }
 
