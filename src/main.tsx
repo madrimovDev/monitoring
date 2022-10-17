@@ -12,6 +12,7 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 store.dispatch(verifyAction())
 
+
 const app = (
 	<Provider store={store}>
 		<SidebarProvider>

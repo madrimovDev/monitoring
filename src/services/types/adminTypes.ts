@@ -7,12 +7,12 @@ export interface Admin{
 	permissions: string[]
 }
 
-interface AdminResponse {
+export interface AdminResponse {
 	message: string
 	admin: Admin
 }
 
-interface AdminsResponse {
+export interface AdminsResponse {
 	message: string
 	admins: Admin[]
 }

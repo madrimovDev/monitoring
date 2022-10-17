@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Button, Checkbox, Divider, Form, Input } from 'antd'
-import { admins, closeDrawer, drawer, permissions } from '@store'
+import { drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
-import { fieldsData, notification } from '@utils'
+import { fieldsData } from '@utils'
 import { createAdmin, updateAdmin } from '@store/actions/adminsActions'
 
 const { Item } = Form
@@ -14,7 +14,6 @@ const AdminCreateForm = () => {
 
 	const { open, data: drawerData, entity } = useAppSelector(drawer)
 	const { data: permissionsData } = useAppSelector(permissions)
-	const { status, message, errorMessage, error } = useAppSelector(admins)
 
 	const fields = fieldsData(drawerData)
 
@@ -34,8 +33,6 @@ const AdminCreateForm = () => {
 			form.resetFields()
 		}
 	}, [open])
-
-
 
 
 	return (
