@@ -1,33 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '@hook'
 import { drawer } from '@store'
-import { Button, ConfigProvider, DatePicker, Divider, Form, Input, InputNumber, Space } from 'antd'
+import { Button, DatePicker, Divider, Form, Input, InputNumber, Space } from 'antd'
 import { fieldsData } from '@utils'
-import moment, { Moment } from 'moment'
+import moment from 'moment'
 import { Teacher } from '@services/types/teacherTypes'
 
 const { Item } = Form
 
 const TeacherCreateForm = () => {
 	const { data, open, entity } = useAppSelector(drawer)
-	const [date, setDate] = useState<Moment | undefined>()
-
 	const teacher = data as Teacher
-
-	useEffect(() => {
-		if (teacher) {
-			setDate(moment(teacher.birthday))
-		} else {
-			setDate(undefined)
-		}
-	}, [data])
-
 	const [form] = Form.useForm()
 	const fields = fieldsData(data)
+
 
 	const onFinish = ( d: any ) => {
 		console.log(d)
 	}
+
+	useEffect(() => {
+		if (teacher) {
+			form.setFieldsValue({
+				birthday: moment(teacher.birthday)
+			})
+		}
+	}, [data])
 
 	useEffect(() => {
 		return () => {
@@ -71,10 +69,9 @@ const TeacherCreateForm = () => {
 				<Input />
 			</Item>
 			<Space>
-				<Item label={'Birthday'} name={'birthday'} >
-					<ConfigProvider >
-						<DatePicker defaultValue={date} />
-					</ConfigProvider>
+				<Item label={'Birthday'} name={'birthday'}
+							rules={[{ type: 'object' as const, required: true, message: 'Please select time!' }]}>
+					<DatePicker />
 				</Item>
 				<Item label={'Phone'} name={'phone'} rules={[
 					{
