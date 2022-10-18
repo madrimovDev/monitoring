@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { useAppSelector } from '@hook'
+import { useAppDispatch, useAppSelector } from '@hook'
 import { drawer } from '@store'
 import { Button, DatePicker, Divider, Form, Input, InputNumber, Space } from 'antd'
 import { fieldsData } from '@utils'
 import moment from 'moment'
 import { Teacher } from '@services/types/teacherTypes'
+import { createTeacher } from '@store/actions/teachersActions'
 
 const { Item } = Form
 
@@ -13,10 +14,10 @@ const TeacherCreateForm = () => {
 	const teacher = data as Teacher
 	const [form] = Form.useForm()
 	const fields = fieldsData(data)
-
+	const dispatch = useAppDispatch()
 
 	const onFinish = ( d: any ) => {
-		console.log(d)
+		dispatch(createTeacher(d))
 	}
 
 	useEffect(() => {
@@ -69,8 +70,13 @@ const TeacherCreateForm = () => {
 				<Input />
 			</Item>
 			<Space>
-				<Item label={'Birthday'} name={'birthday'}
-							rules={[{ type: 'object' as const, required: true, message: 'Please select time!' }]}>
+				<Item label={'Birthday'} name={'birthday'} rules={[
+					{
+						type: 'object' as const,
+						required: true,
+						message: 'Please select time!'
+					}
+				]}>
 					<DatePicker />
 				</Item>
 				<Item label={'Phone'} name={'phone'} rules={[
