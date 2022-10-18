@@ -29,7 +29,7 @@ const AdminCreateForm = () => {
 	}
 
 	useEffect(() => {
-		if (!open) {
+		return () => {
 			form.resetFields()
 		}
 	}, [open])
