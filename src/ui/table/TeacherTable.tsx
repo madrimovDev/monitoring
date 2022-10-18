@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@hook'
 import { openDrawer, teachers } from '@store'
 import { getFullDate } from '@utils'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
+import { getAllDirections } from '@store/actions/directionsActions'
 
 const { Column, ColumnGroup } = Table
 const { Text } = Typography
@@ -19,6 +20,7 @@ const TeacherTable = () => {
 			entity: 'update',
 			data: d
 		}))
+		dispatch(getAllDirections())
 	}
 
 	return (

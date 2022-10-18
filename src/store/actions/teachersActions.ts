@@ -7,7 +7,16 @@ import { AxiosError } from 'axios'
 export const getAllTeachers = createAsyncThunk('teachers/getAll', async ( _, { rejectWithValue } ) => {
 	try {
 		const result = await TeacherService.getAll()
-		return result.data
+		const data = {
+			...result.data,
+			teachers: result.data.teachers.map(t => {
+				return {
+					...t,
+					permissions: []
+				}
+			})
+		}
+		return data
 	} catch (e) {
 		throw rejectWithValue(responseErrorMapper(e as AxiosError<{ message: string }>))
 	}
