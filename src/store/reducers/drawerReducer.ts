@@ -1,8 +1,8 @@
-import AdminDrawerInitialState from '@store/types/adminDrawerTypes'
+import DrawerInitialState from '@store/types/drawerTypes'
 import { createReducer } from '@reduxjs/toolkit'
 import { closeDrawer, openDrawer } from '@store/actions'
 
-const initialState: AdminDrawerInitialState = {
+const initialState: DrawerInitialState = {
 	open: false,
 	type: 'admin',
 	entity: 'create',

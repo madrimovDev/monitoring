@@ -8,6 +8,7 @@ import {
 	permissionsReducer
 } from './reducers'
 import teachersReducer from '@store/reducers/teachersReducer'
+import modalReducer from '@store/reducers/modalReducer'
 
 const store = configureStore({
 	reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
 		permissions: permissionsReducer,
 		admins: adminReducer,
 		teachers: teachersReducer,
-		directions: directionsReducer
+		directions: directionsReducer,
+		modal: modalReducer
 	}
 })
 
