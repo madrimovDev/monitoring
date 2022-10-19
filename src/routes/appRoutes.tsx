@@ -5,6 +5,7 @@ import SuspenseWithLoader from '@routes/SuspenseWithLoader'
 const Dashboard = lazy(() => import('@pages/Dashboard'))
 const Admins = lazy(() => import('@pages/Admins'))
 const Teachers = lazy(() => import('@pages/Teachers'))
+const Directions = lazy(() => import('@pages/Directions'))
 const PageNotFound = lazy(() => import('@pages/PageNotFound'))
 
 const appRoutes: RouteObject[] = [
@@ -19,6 +20,10 @@ const appRoutes: RouteObject[] = [
 	{
 		path: 'teachers',
 		element: <SuspenseWithLoader children={<Teachers />} />
+	},
+	{
+		path: 'directions',
+		element: <SuspenseWithLoader children={<Directions />} />
 	},
 	{
 		path: '*',

@@ -1,7 +1,5 @@
-export { default as PageNotFound } from './PageNotFound'
-export { default as Login } from './Login'
 export { default as Dashboard } from './Dashboard'
 export { default as Admins } from './Admins'
-export { default as RequireAuth } from './RequireAuth'
 export { default as LoadingPage } from './LoadingPage'
 export { default as Teachers } from './Teachers'
+export { default as Directions } from './Directions'

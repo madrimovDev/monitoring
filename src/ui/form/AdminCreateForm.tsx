@@ -17,6 +17,8 @@ const AdminCreateForm = () => {
 
 	const fields = fieldsData(drawerData)
 
+	console.log(fields)
+
 	const onFinish = ( formData: any ) => {
 		if (entity === 'create' && !drawerData) {
 			dispatch(createAdmin(formData))
@@ -29,7 +31,10 @@ const AdminCreateForm = () => {
 	}
 
 	useEffect(() => {
-		if (!open) {
+		if(!open){
+			form.resetFields()
+		}
+		return () => {
 			form.resetFields()
 		}
 	}, [open])

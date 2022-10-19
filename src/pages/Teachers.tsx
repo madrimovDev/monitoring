@@ -5,6 +5,7 @@ import { Drawer, TeacherTable } from '@ui'
 import { Button, Col, Divider, Row, Space } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { openDrawer } from '@store'
+import { getAllDirections } from '@store/actions/directionsActions'
 
 const Teachers = () => {
 	const dispatch = useAppDispatch()
@@ -14,6 +15,7 @@ const Teachers = () => {
 			type: 'teacher',
 			entity: 'create'
 		}))
+		dispatch(getAllDirections())
 	}
 
 	useEffect(() => {

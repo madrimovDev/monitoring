@@ -1,42 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { useAppSelector } from '@hook'
-import { drawer } from '@store'
-import { Button, ConfigProvider, DatePicker, Divider, Form, Input, InputNumber, Space } from 'antd'
+import React, { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '@hook'
+import { directions, drawer } from '@store'
+import { Button, Checkbox, Divider, Form, Input, InputNumber, Space } from 'antd'
 import { fieldsData } from '@utils'
-import moment, { Moment } from 'moment'
-import { Teacher } from '@services/types/teacherTypes'
+import { createTeacher } from '@store/actions/teachersActions'
 
 const { Item } = Form
 
 const TeacherCreateForm = () => {
-	const { data, open, entity } = useAppSelector(drawer)
-	const [date, setDate] = useState<Moment | undefined>()
-
-	const teacher = data as Teacher
-
-	useEffect(() => {
-		if (teacher) {
-			setDate(moment(teacher.birthday))
-		} else {
-			setDate(undefined)
-		}
-	}, [data])
-
+	const { data, entity, open } = useAppSelector(drawer)
+	const { data: direction } = useAppSelector(directions)
 	const [form] = Form.useForm()
 	const fields = fieldsData(data)
+	const dispatch = useAppDispatch()
 
 	const onFinish = ( d: any ) => {
-		console.log(d)
+		const { directions } = d
+		let directs: any[] = []
+
+		directions.forEach(( d: string ) => {
+			directs.push(direction?.find(item => item.name === d)?.id)
+		})
+
+		dispatch(createTeacher({
+			...d,
+			phone: d.phone.toString(),
+			directions: directs
+		}))
 	}
 
+
 	useEffect(() => {
-		return () => {
+		if (!open) {
 			form.resetFields()
 		}
 	}, [open])
 
 	return (
-		<Form onFinish={onFinish} form={form} layout={'vertical'} fields={fields}>
+		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={fields}>
 			<Item label={'Username'} name={'username'} rules={[
 				{
 					required: true,
@@ -71,10 +72,12 @@ const TeacherCreateForm = () => {
 				<Input />
 			</Item>
 			<Space>
-				<Item label={'Birthday'} name={'birthday'} >
-					<ConfigProvider >
-						<DatePicker defaultValue={date} />
-					</ConfigProvider>
+				<Item label={'Birthday'} name={'birthday'} rules={[
+					{
+						type: 'date'
+					}
+				]}>
+					<Input type={'date'} />
 				</Item>
 				<Item label={'Phone'} name={'phone'} rules={[
 					{
@@ -86,6 +89,10 @@ const TeacherCreateForm = () => {
 					}} />
 				</Item>
 			</Space>
+			<Divider children={'Directions'} />
+			<Item name={'directions'}>
+				<Checkbox.Group options={direction?.map(d => d.name)} />
+			</Item>
 			<Item>
 				<Button htmlType={'submit'}>Submit</Button>
 			</Item>

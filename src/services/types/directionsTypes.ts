@@ -4,12 +4,16 @@ export interface Direction {
 	status: string;
 }
 
+export interface NewDirection {
+	name: string
+}
+
 export interface DirectionsResponse {
 	message: string;
 	directions: Direction[];
 }
 
-export interface DirectionResponse{
+export interface DirectionResponse {
 	message: string
 	direction: Direction
 }
