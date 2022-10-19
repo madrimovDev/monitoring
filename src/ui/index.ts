@@ -4,3 +4,4 @@ export { default as DashboardStatistics } from './statisticsCard/DashboardStatis
 export { default as AdminTable } from './table/AdminTable'
 export { default as TeacherTable } from './table/TeacherTable'
 export { default as DirectionsList } from './list/DirectionsList'
+export { default as Modal } from './modal/Modal'

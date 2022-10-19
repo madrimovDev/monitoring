@@ -1,6 +1,6 @@
 import ModalInitialState from '@store/types/modalTypes'
 import { createReducer } from '@reduxjs/toolkit'
-import { openModal } from '@store/actions/modalActions'
+import { closeModal, openModal } from '@store/actions/modalActions'
 
 const initialState: ModalInitialState = {
 	open: false,
@@ -14,7 +14,7 @@ const modalReducer = createReducer(initialState, builder => {
 		state.type = action.payload.type
 		state.entity = action.payload.entity
 		state.data = action.payload.data
-	}).addCase(openModal, ( state ) => {
+	}).addCase(closeModal, ( state ) => {
 		state.open = false
 		state.data = undefined
 	})
