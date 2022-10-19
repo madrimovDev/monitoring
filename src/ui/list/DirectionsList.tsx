@@ -5,18 +5,24 @@ import { Button, List, Space, Tag } from 'antd'
 import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { openModal } from '@store/actions/modalActions'
 import { Direction } from '@services/types/directionsTypes'
+import { deleteDirection } from '@store/actions'
 
 const { Item } = List
 
 const DirectionsList = () => {
 	const { data, status } = useAppSelector(directions)
 	const dispatch = useAppDispatch()
+
 	const onEdit = ( d: Direction ) => {
 		dispatch(openModal({
 			type: 'direction',
 			entity: 'update',
 			data: d
 		}))
+	}
+
+	const onDelete = ( id: number ) => {
+		dispatch(deleteDirection(id))
 	}
 
 	return (
@@ -32,7 +38,8 @@ const DirectionsList = () => {
 							<Space>
 								<Button size={'small'} onClick={() => onEdit(direction)} icon={<EditFilled />}
 												type={'primary'}>Edit</Button>
-								<Button size={'small'} icon={<DeleteFilled />} danger>Delete</Button>
+								<Button size={'small'} onClick={() => onDelete(direction.id)} icon={<DeleteFilled />}
+												danger>Delete</Button>
 							</Space>
 						</Item>
 					)

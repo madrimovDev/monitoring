@@ -9,8 +9,13 @@ const Modal = () => {
 	const { open, type, entity } = useAppSelector(modal)
 	const dispatch = useAppDispatch()
 	return (
-		<AntModal style={{ textTransform: 'capitalize' }} title={`${entity} ${type}`} footer={null} open={open}
-							onCancel={() => dispatch(closeModal())}>
+		<AntModal
+			style={{ textTransform: 'capitalize' }}
+			title={`${entity} ${type}`}
+			footer={null}
+			open={open}
+			onCancel={() => dispatch(closeModal())}
+		>
 			{type === 'direction' && <DirectionCreateForm />}
 		</AntModal>
 	)
