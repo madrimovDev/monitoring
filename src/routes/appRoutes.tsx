@@ -6,7 +6,9 @@ const Dashboard = lazy(() => import('@pages/Dashboard'))
 const Admins = lazy(() => import('@pages/Admins'))
 const Teachers = lazy(() => import('@pages/Teachers'))
 const Directions = lazy(() => import('@pages/Directions'))
+const Groups = lazy(() => import('@pages/Groups'))
 const PageNotFound = lazy(() => import('@pages/PageNotFound'))
+
 
 const appRoutes: RouteObject[] = [
 	{
@@ -24,6 +26,10 @@ const appRoutes: RouteObject[] = [
 	{
 		path: 'directions',
 		element: <SuspenseWithLoader children={<Directions />} />
+	},
+	{
+		path: 'groups',
+		element: <SuspenseWithLoader children={<Groups />} />
 	},
 	{
 		path: '*',
