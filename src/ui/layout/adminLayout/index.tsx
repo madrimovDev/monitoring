@@ -7,7 +7,7 @@ import Sidebar from './sidebar/Sidebar'
 
 const { Content } = AntLayout
 
-const Layout = () => {
+const AdminLayout = () => {
 	return (
 		<AntLayout style={{ height: '100vh', overflow: 'hidden' }}>
 			<Sidebar />
@@ -23,4 +23,4 @@ const Layout = () => {
 	)
 }
 
-export default Layout
+export default AdminLayout

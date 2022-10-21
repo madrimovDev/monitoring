@@ -10,9 +10,9 @@ const Groups = lazy(() => import('@pages/Groups'))
 const PageNotFound = lazy(() => import('@pages/PageNotFound'))
 
 
-const appRoutes: RouteObject[] = [
+const adminRoutes: RouteObject[] = [
 	{
-		path: '/',
+		index: true,
 		element: <SuspenseWithLoader children={<Dashboard />} />
 	},
 	{
@@ -37,4 +37,4 @@ const appRoutes: RouteObject[] = [
 	}
 ]
 
-export default appRoutes
+export default adminRoutes

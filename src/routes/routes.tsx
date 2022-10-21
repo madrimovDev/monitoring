@@ -1,11 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { lazy } from 'react'
 import SuspenseWithLoader from '@routes/SuspenseWithLoader'
-import appRoutes from '@routes/appRoutes'
+import adminRoutes from '@routes/adminRoutes'
+import TeacherLayout from '@ui/layout/teacherLayout'
 
 const Login = lazy(() => import('@pages/Login'))
 const RequireAuth = lazy(() => import('@pages/RequireAuth'))
-const Layout = lazy(() => import('@ui/layout/Layout'))
+const AdminLayout = lazy(() => import('@ui/layout/adminLayout'))
 
 const routes = createBrowserRouter([
 	{
@@ -17,9 +18,13 @@ const routes = createBrowserRouter([
 		element: <SuspenseWithLoader children={<RequireAuth />} />,
 		children: [
 			{
-				path: '/',
-				element: <SuspenseWithLoader children={<Layout />} />,
-				children: appRoutes,
+				path: 'admin',
+				element: <SuspenseWithLoader children={<AdminLayout />} />,
+				children: adminRoutes
+			},
+			{
+				path: 'teacher',
+				element: <SuspenseWithLoader children={<TeacherLayout />} />
 			}
 		]
 	}

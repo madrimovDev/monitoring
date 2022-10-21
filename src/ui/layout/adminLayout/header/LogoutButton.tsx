@@ -7,13 +7,15 @@ import { logoutAction } from '@store/actions'
 const LogoutButton = () => {
 	const dispatch = useAppDispatch()
 
+
 	const logout = () => {
 		dispatch(logoutAction())
+
 	}
 
 	return (
 		<Button onClick={logout} size={'small'} type={'text'} icon={<LogoutOutlined />} danger>
-			Logout
+			<a href='/login'>Logout</a>
 		</Button>
 	)
 }

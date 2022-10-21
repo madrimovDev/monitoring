@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react'
-import { GroupsService } from '@services'
+import React from 'react'
 
 const Groups = () => {
-	useEffect(() => {
-		GroupsService.getAll().then(( res ) => {
-			console.table(res.data)
-		})
-	}, [])
+
 	return (
 		<div>
 			groups
