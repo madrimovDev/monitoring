@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@hook'
 import { directions, modal } from '@store/selectors/selectors'
 import { createDirection, updateDirection } from '@store/actions'
 import { NewDirection } from '@services/types/directionsTypes'
+import { closeModal } from '@store/actions/modalActions'
 
 const { Item } = Form
 
@@ -21,6 +22,12 @@ const DirectionCreateForm = () => {
 			form.resetFields()
 		}
 	}, [open])
+
+	useEffect(() => {
+		if (status === 'FULFILLED') {
+			dispatch(closeModal())
+		}
+	}, [status])
 
 	const onFinish = ( d: NewDirection ) => {
 		if (entity === 'create') {

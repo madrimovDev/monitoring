@@ -20,7 +20,8 @@ const store = configureStore({
 		teachers: teachersReducer,
 		directions: directionsReducer,
 		modal: modalReducer
-	}
+	},
+	devTools: !!import.meta.env.MODE
 })
 
 export type RootState = ReturnType<typeof store.getState>

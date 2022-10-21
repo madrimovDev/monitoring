@@ -9,6 +9,7 @@ const LogoutButton = () => {
 
 	const logout = () => {
 		dispatch(logoutAction())
+		window.location.reload()
 	}
 
 	return (

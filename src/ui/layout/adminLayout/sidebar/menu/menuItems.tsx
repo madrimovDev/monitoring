@@ -20,37 +20,37 @@ export const menuItems: MenuItems[] = [
 	{
 		key: 'dashboard',
 		name: 'Dashboard',
-		path: '/',
+		path: '',
 		icon: <DashboardOutlined />
 	},
 	{
 		key: 'admins',
 		name: 'Admins',
-		path: '/admins',
+		path: 'admins',
 		icon: <ControlOutlined />
 	},
 	{
 		key: 'teachers',
 		name: 'Teachers',
-		path: '/teachers',
+		path: 'teachers',
 		icon: <GroupOutlined />
 	},
 	{
 		key: 'students',
 		name: 'Students',
-		path: '/students',
+		path: 'students',
 		icon: <UserOutlined />
 	},
 	{
 		key: 'groups',
 		name: 'Groups',
-		path: '/groups',
+		path: 'groups',
 		icon: <TeamOutlined />
 	},
 	{
 		key: 'directions',
 		name: 'Directions',
-		path: '/directions',
+		path: 'directions',
 		icon: <DatabaseOutlined />
 	}
 ]

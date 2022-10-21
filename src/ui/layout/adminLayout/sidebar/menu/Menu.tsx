@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { useAppSelector } from '@hook'
 import { auth } from '@store'
 import { sidebarData } from '@utils'
-import { menuItems } from '@ui/layout/sidebar/menu/menuItems'
+import { menuItems } from '@ui/layout/adminLayout/sidebar/menu/menuItems'
 
 const Menu = () => {
 	const { pathname } = useLocation()

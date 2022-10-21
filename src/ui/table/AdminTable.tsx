@@ -23,7 +23,7 @@ const AdminTable = () => {
 		dispatch(openDrawer({
 			type: 'admin',
 			entity: 'update',
-			data: record
+			data: record as any
 		}))
 		dispatch(getPermissions())
 	}

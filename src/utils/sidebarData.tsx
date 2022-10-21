@@ -1,4 +1,4 @@
-import { MenuItems } from '@ui/layout/sidebar/menu/menuItems'
+import { MenuItems } from '@ui/layout/adminLayout/sidebar/menu/menuItems'
 import { MenuProps } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
