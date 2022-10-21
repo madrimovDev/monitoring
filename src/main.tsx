@@ -14,20 +14,20 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 store.dispatch(verifyAction())
 
-
 const app = (
-	<Provider store={store}>
-		<SidebarProvider>
-			<RouterProvider router={routes} />
-		</SidebarProvider>
-		<Button type={'primary'} danger shape={'round'} size={'large'} style={{
-			position: 'fixed',
-			bottom: '20px',
-			right: '20px'
-		}} onClick={() => {
-			window.location.reload()
-		}} icon={<ReloadOutlined />} children={'Reload Page'} />
-	</Provider>
+        <Provider store={store}>
+          <SidebarProvider>
+            <RouterProvider router={routes} />
+          </SidebarProvider>
+          <Button type={'primary'} danger shape={'round'} size={'large'}
+                  style={{
+                    position: 'fixed',
+                    bottom: '20px',
+                    right: '20px'
+                  }} onClick={() => {
+            window.location.reload()
+          }} icon={<ReloadOutlined />} children={'Reload Page'} />
+        </Provider>
 )
 
 root.render(app)
