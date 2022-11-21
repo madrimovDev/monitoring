@@ -30,6 +30,10 @@ export const createTeacher = createAsyncThunk('teachers/create', async ( teacher
 	}
 })
 
+export const updateTeacher = createAsyncThunk('teachers/update', async (teacher: NewTeacher, {}) => {
+
+})
+
 export const deleteTeacher = createAsyncThunk('teachers/delete', async ( id: number, { rejectWithValue } ) => {
 	try {
 		const result = await TeacherService.del(id)
