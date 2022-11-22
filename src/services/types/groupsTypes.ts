@@ -15,3 +15,7 @@ export interface GroupResponse {
 	message: string;
 	group: Group;
 }
+
+export interface NewGroup {
+	
+}

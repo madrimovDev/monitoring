@@ -5,7 +5,7 @@ import {
 	authReducer,
 	dashboardReducer,
 	directionsReducer,
-	permissionsReducer
+	permissionsReducer,
 } from './reducers'
 import teachersReducer from '@store/reducers/teachersReducer'
 import modalReducer from '@store/reducers/modalReducer'
@@ -19,9 +19,8 @@ const store = configureStore({
 		admins: adminReducer,
 		teachers: teachersReducer,
 		directions: directionsReducer,
-		modal: modalReducer
+		modal: modalReducer,
 	},
-	devTools: !!import.meta.env.MODE
 })
 
 export type RootState = ReturnType<typeof store.getState>

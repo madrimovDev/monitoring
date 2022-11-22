@@ -8,14 +8,15 @@ import DirectionCreateForm from '@ui/form/DirectionCreateForm'
 const Modal = () => {
 	const { open, type, entity } = useAppSelector(modal)
 	const dispatch = useAppDispatch()
+	console.count('render: Modal')
+
 	return (
 		<AntModal
 			style={{ textTransform: 'capitalize' }}
 			title={`${entity} ${type}`}
 			footer={null}
 			open={open}
-			onCancel={() => dispatch(closeModal())}
-		>
+			onCancel={() => dispatch(closeModal())}>
 			{type === 'direction' && <DirectionCreateForm />}
 		</AntModal>
 	)

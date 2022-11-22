@@ -5,29 +5,37 @@ interface FieldData {
 	value: string | number | []
 }
 
-const fieldsData = ( data: any ) => {
+const fieldsData = (data: any) => {
 	const arr: FieldData[] = []
 
 	if (!data) return arr
 
-	Object.keys(data).forEach(( key ) => {
+	Object.keys(data).forEach((key) => {
 		if (key !== 'id') {
-			if (Array.isArray(data[key])) {
+			if (key === 'permissions') {
 				arr.push({
 					name: key,
-					value: data[key].map(( d: { name: any } ) => d.name)
+					value: data[key],
+				})
+				return
+			}
+			if (Array.isArray(data[key])) {
+				console.log(key, data[key]);
+				arr.push({
+					name: key,
+					value: data[key].map((d: { name: any }) => d.name),
 				})
 				return
 			}
 			if (key === 'birthday') {
 				arr.push({
 					name: key,
-					value: moment(data[key]).format('YYYY-DD-MM')
+					value: moment(data[key]).format('YYYY-DD-MM'),
 				})
 			} else {
 				arr.push({
 					name: key,
-					value: data[key]
+					value: data[key],
 				})
 			}
 		}

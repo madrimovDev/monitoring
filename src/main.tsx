@@ -26,7 +26,7 @@ const app = (
                     right: '20px'
                   }} onClick={() => {
             window.location.reload()
-          }} icon={<ReloadOutlined />} children={'Reload Page'} />
+          }} icon={<ReloadOutlined />} />
         </Provider>
 )
 

@@ -23,32 +23,49 @@ const DirectionCreateForm = () => {
 		}
 	}, [open])
 
-	useEffect(() => {
-		if (status === 'FULFILLED') {
-			dispatch(closeModal())
-		}
-	}, [status])
+	// useEffect(() => {
+	// 	if (status === 'FULFILLED') {
+	// 		dispatch(closeModal())
+	// 	}
+	// }, [status])
 
-	const onFinish = ( d: NewDirection ) => {
+	const onFinish = (d: NewDirection) => {
 		if (entity === 'create') {
+			dispatch(closeModal())
+
 			return dispatch(createDirection(d))
 		}
 		if (entity === 'update') {
-			return dispatch(updateDirection({
-				id: data?.id || 0,
-				direction: d
-			}))
+			dispatch(closeModal())
+
+			return dispatch(
+				updateDirection({
+					id: data?.id || 0,
+					direction: d,
+				})
+			)
 		}
 	}
 
 	return (
-		<Form onFinish={onFinish} layout={'vertical'} fields={fields} form={form}>
-			<Item label={'Name'} name={'name'}>
+		<Form
+			onFinish={onFinish}
+			layout={'vertical'}
+			fields={fields}
+			form={form}>
+			<Item
+				label={'Name'}
+				name={'name'}>
 				<Input />
 			</Item>
 			<Item>
-				<Button loading={status === 'PENDING'} style={{ textTransform: 'capitalize' }} htmlType={'submit'}
-								type={'primary'}>{entity}</Button>
+				<Button
+					loading={status === 'PENDING'}
+					style={{ textTransform: 'capitalize' }}
+					htmlType={'submit'}
+					type={'primary'}>
+					{entity}
+				</Button>
 			</Item>
 		</Form>
 	)

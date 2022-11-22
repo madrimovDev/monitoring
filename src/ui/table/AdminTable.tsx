@@ -19,41 +19,74 @@ const AdminTable = () => {
 	const dispatch = useAppDispatch()
 	const { status, data } = useAppSelector(admins)
 
-	const onEdit = ( record: DataType ) => {
-		dispatch(openDrawer({
-			type: 'admin',
-			entity: 'update',
-			data: record as any
-		}))
+	const onEdit = (record: DataType) => {
+		dispatch(
+			openDrawer({
+				type: 'admin',
+				entity: 'update',
+				data: record as any,
+			})
+		)
 		dispatch(getPermissions())
 	}
 
-	const onDelete = ( id: number ) => {
+	const onDelete = (id: number) => {
 		dispatch(deleteAdmin(id))
 	}
 
 	return (
-		<Table size={'middle'} showHeader title={() => 'Admins'} loading={status === 'PENDING'} dataSource={data || []}
-					 rowKey={'id'}>
-			<Column title={'Name'} dataIndex={'name'} key={'name'} />
-			<Column title={'Permission'} dataIndex={'permissions'} key={'permissions'} render={( value: string[] ) => {
-				return (
-					<>
-						{
-							value.map(item => (
-								<Tag key={item} color={'blue'}>{item}</Tag>
-							))
-						}
-					</>
-				)
-			}} />
-			<Column title={'Action'} key={'action'} render={( value ) => (
-				<Space>
-					<Button onClick={() => onEdit(value)} size={'small'} type={'primary'}
-									icon={<EditFilled />}>Edit</Button>
-					<Button onClick={() => onDelete(value.id)} size={'small'} danger icon={<DeleteFilled />}>Delete</Button>
-				</Space>
-			)} />
+		<Table
+			size={'middle'}
+			showHeader
+			title={() => 'Admins'}
+			loading={status === 'PENDING'}
+			dataSource={data || []}
+			rowKey={'id'}>
+			<Column
+				title={'Name'}
+				dataIndex={'name'}
+				key={'name'}
+			/>
+			<Column
+				title={'Permission'}
+				dataIndex={'permissions'}
+				key={'permissions'}
+				render={(value: string[]) => {
+					return (
+						<>
+							{value.map((item) => (
+								<Tag
+									key={item}
+									color={'blue'}>
+									{item}
+								</Tag>
+							))}
+						</>
+					)
+				}}
+			/>
+			<Column
+				title={'Action'}
+				key={'action'}
+				render={(value) => (
+					<Space>
+						<Button
+							onClick={() => onEdit(value)}
+							size={'small'}
+							type={'primary'}
+							icon={<EditFilled />}>
+							Edit
+						</Button>
+						<Button
+							onClick={() => onDelete(value.id)}
+							size={'small'}
+							danger
+							icon={<DeleteFilled />}>
+							Delete
+						</Button>
+					</Space>
+				)}
+			/>
 		</Table>
 	)
 }

@@ -9,6 +9,7 @@ import { openModal } from '@store/actions/modalActions'
 const Directions = () => {
 
 	const dispatch = useAppDispatch()
+	
 	const onOpen = () => {
 		dispatch(openModal({
 			type: 'direction',

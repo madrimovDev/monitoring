@@ -17,7 +17,6 @@ const AdminCreateForm = () => {
 
   const fields = fieldsData(drawerData)
 
-  console.log(fields)
 
   const onFinish = ( formData: any ) => {
     if (entity === 'create' && !drawerData) {
