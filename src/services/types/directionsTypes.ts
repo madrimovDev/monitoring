@@ -1,7 +1,7 @@
 export interface Direction {
-	id: number;
-	name: string;
-	status: string;
+	id: number
+	name: string
+	status: string
 }
 
 export interface NewDirection {
@@ -9,8 +9,8 @@ export interface NewDirection {
 }
 
 export interface DirectionsResponse {
-	message: string;
-	directions: Direction[];
+	message: string
+	directions: Direction[]
 }
 
 export interface DirectionResponse {

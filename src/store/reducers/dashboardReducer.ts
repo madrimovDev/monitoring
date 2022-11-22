@@ -9,24 +9,25 @@ const initialState: InitialState<DashboardResponseType | null> = {
 	data: null,
 	response: {
 		error: false,
-		errorMessage: ''
-	}
+		errorMessage: '',
+	},
 }
 
-const dashboardReducer = createReducer(initialState, builder => {
-	builder.addCase(getDashboard.pending, ( state ) => {
-		state.status = 'PENDING'
-		state.response = errorHandler(false)
-	})
-	.addCase(getDashboard.fulfilled, ( state, action ) => {
-		state.status = 'FULFILLED'
-		state.data = action.payload
-		state.response = errorHandler(false)
-	})
-	.addCase(getDashboard.rejected, ( state ) => {
-		state.status = 'REJECTED'
-		state.response = errorHandler(true, 'error')
-	})
+const dashboardReducer = createReducer(initialState, (builder) => {
+	builder
+		.addCase(getDashboard.pending, (state) => {
+			state.status = 'PENDING'
+			state.response = errorHandler(false)
+		})
+		.addCase(getDashboard.fulfilled, (state, action) => {
+			state.status = 'FULFILLED'
+			state.data = action.payload
+			state.response = errorHandler(false)
+		})
+		.addCase(getDashboard.rejected, (state) => {
+			state.status = 'REJECTED'
+			state.response = errorHandler(true, 'error')
+		})
 })
 
 export default dashboardReducer

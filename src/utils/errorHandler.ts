@@ -1,14 +1,14 @@
-const errorHandler = ( error: boolean, errorMessage?: string ) => {
+const errorHandler = (error: boolean, errorMessage?: string) => {
 	if (errorMessage && error) {
 		return {
 			error: true,
-			errorMessage: errorMessage
+			errorMessage: errorMessage,
 		}
 	}
 
 	return {
 		error: false,
-		errorMessage: ''
+		errorMessage: '',
 	}
 }
 

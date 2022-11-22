@@ -5,9 +5,7 @@ interface SuspenseWithLoaderPropsType {
 	children: ReactNode
 }
 
-const SuspenseWithLoader = ( { children }: SuspenseWithLoaderPropsType ) => {
-	return <Suspense fallback={<LoadingPage />}>
-		{children}
-	</Suspense>
+const SuspenseWithLoader = ({ children }: SuspenseWithLoaderPropsType) => {
+	return <Suspense fallback={<LoadingPage />}>{children}</Suspense>
 }
 export default SuspenseWithLoader

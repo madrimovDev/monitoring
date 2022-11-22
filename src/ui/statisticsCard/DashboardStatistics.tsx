@@ -8,7 +8,11 @@ interface DashboardStatisticsPropsType {
 	loading: boolean
 }
 
-const DashboardStatistics = ( { title, count, loading }: DashboardStatisticsPropsType ) => {
+const DashboardStatistics = ({
+	title,
+	count,
+	loading,
+}: DashboardStatisticsPropsType) => {
 	const navigate = useNavigate()
 
 	const clickHandler = () => {
@@ -16,9 +20,18 @@ const DashboardStatistics = ( { title, count, loading }: DashboardStatisticsProp
 	}
 
 	return (
-		<Col span={6} onClick={clickHandler}>
-			<Card bordered loading={loading} hoverable>
-				<Statistic valueStyle={{ fontSize: 30 }} title={title} value={count} />
+		<Col
+			span={6}
+			onClick={clickHandler}>
+			<Card
+				bordered
+				loading={loading}
+				hoverable>
+				<Statistic
+					valueStyle={{ fontSize: 30 }}
+					title={title}
+					value={count}
+				/>
 			</Card>
 		</Col>
 	)

@@ -5,7 +5,7 @@ import {
 	DatabaseOutlined,
 	GroupOutlined,
 	TeamOutlined,
-	UserOutlined
+	UserOutlined,
 } from '@ant-design/icons'
 
 export interface MenuItems {
@@ -21,36 +21,36 @@ export const menuItems: MenuItems[] = [
 		key: 'dashboard',
 		name: 'Dashboard',
 		path: '',
-		icon: <DashboardOutlined />
+		icon: <DashboardOutlined />,
 	},
 	{
 		key: 'admins',
 		name: 'Admins',
 		path: 'admins',
-		icon: <ControlOutlined />
+		icon: <ControlOutlined />,
 	},
 	{
 		key: 'teachers',
 		name: 'Teachers',
 		path: 'teachers',
-		icon: <GroupOutlined />
+		icon: <GroupOutlined />,
 	},
 	{
 		key: 'students',
 		name: 'Students',
 		path: 'students',
-		icon: <UserOutlined />
+		icon: <UserOutlined />,
 	},
 	{
 		key: 'groups',
 		name: 'Groups',
 		path: 'groups',
-		icon: <TeamOutlined />
+		icon: <TeamOutlined />,
 	},
 	{
 		key: 'directions',
 		name: 'Directions',
 		path: 'directions',
-		icon: <DatabaseOutlined />
-	}
+		icon: <DatabaseOutlined />,
+	},
 ]

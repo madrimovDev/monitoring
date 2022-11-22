@@ -1,12 +1,16 @@
 import { notification } from 'antd'
 
-type NotificationType = 'success' | 'info' | 'warning' | 'error';
+type NotificationType = 'success' | 'info' | 'warning' | 'error'
 
-const notifications= (type: NotificationType, status?: number | string, desc?: string) => {
+const notifications = (
+	type: NotificationType,
+	status?: number | string,
+	desc?: string
+) => {
 	notification[type]({
 		message: status,
-		description: desc
-	});
-};
+		description: desc,
+	})
+}
 
 export default notifications

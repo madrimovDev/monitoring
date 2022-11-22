@@ -1,4 +1,4 @@
 export interface PermissionsResponseType {
-	message: string,
+	message: string
 	permissions: string[]
 }

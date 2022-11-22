@@ -9,32 +9,31 @@ const Directions = lazy(() => import('@pages/Directions'))
 const Groups = lazy(() => import('@pages/Groups'))
 const PageNotFound = lazy(() => import('@pages/PageNotFound'))
 
-
 const adminRoutes: RouteObject[] = [
 	{
 		index: true,
-		element: <SuspenseWithLoader children={<Dashboard />} />
+		element: <SuspenseWithLoader children={<Dashboard />} />,
 	},
 	{
 		path: 'admins',
-		element: <SuspenseWithLoader children={<Admins />} />
+		element: <SuspenseWithLoader children={<Admins />} />,
 	},
 	{
 		path: 'teachers',
-		element: <SuspenseWithLoader children={<Teachers />} />
+		element: <SuspenseWithLoader children={<Teachers />} />,
 	},
 	{
 		path: 'directions',
-		element: <SuspenseWithLoader children={<Directions />} />
+		element: <SuspenseWithLoader children={<Directions />} />,
 	},
 	{
 		path: 'groups',
-		element: <SuspenseWithLoader children={<Groups />} />
+		element: <SuspenseWithLoader children={<Groups />} />,
 	},
 	{
 		path: '*',
-		element: <SuspenseWithLoader children={<PageNotFound />} />
-	}
+		element: <SuspenseWithLoader children={<PageNotFound />} />,
+	},
 ]
 
 export default adminRoutes

@@ -1,4 +1,4 @@
-export interface Admin{
+export interface Admin {
 	id: number
 	userId: number
 	role: string

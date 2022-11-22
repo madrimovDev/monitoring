@@ -20,7 +20,7 @@ const fieldsData = (data: any) => {
 				return
 			}
 			if (Array.isArray(data[key])) {
-				console.log(key, data[key]);
+				console.log(key, data[key])
 				arr.push({
 					name: key,
 					value: data[key].map((d: { name: any }) => d.name),

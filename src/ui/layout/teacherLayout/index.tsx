@@ -11,7 +11,9 @@ const TeacherLayout = () => {
 			<Content style={{ overflow: 'auto' }}>
 				<Header />
 				<Row>
-					<Col span={22} offset={1}>
+					<Col
+						span={22}
+						offset={1}>
 						<Outlet />
 					</Col>
 				</Row>

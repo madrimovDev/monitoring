@@ -13,7 +13,12 @@ const LogoutButton = () => {
 	}
 
 	return (
-		<Button onClick={logout} size={'small'} type={'text'} icon={<LogoutOutlined />} danger>
+		<Button
+			onClick={logout}
+			size={'small'}
+			type={'text'}
+			icon={<LogoutOutlined />}
+			danger>
 			Logout
 		</Button>
 	)

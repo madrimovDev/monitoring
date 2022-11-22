@@ -9,25 +9,28 @@ const initialState: InitialState<PermissionsResponseType | null> = {
 	data: null,
 	response: {
 		error: false,
-		errorMessage: ''
-	}
+		errorMessage: '',
+	},
 }
 
-const permissionsReducer = createReducer(initialState, builder => {
+const permissionsReducer = createReducer(initialState, (builder) => {
 	builder
-	.addCase(getPermissions.pending, ( state ) => {
-		state.status = 'PENDING'
-		state.response = errorHandler(false)
-	})
-	.addCase(getPermissions.fulfilled, ( state, action ) => {
-		state.status = 'FULFILLED'
-		state.data = action.payload
-		state.response = errorHandler(false)
-	})
-	.addCase(getPermissions.rejected, ( state, action: PayloadAction<any, any> ) => {
-		state.status = 'REJECTED'
-		state.response = errorHandler(true, action.payload.message)
-	})
+		.addCase(getPermissions.pending, (state) => {
+			state.status = 'PENDING'
+			state.response = errorHandler(false)
+		})
+		.addCase(getPermissions.fulfilled, (state, action) => {
+			state.status = 'FULFILLED'
+			state.data = action.payload
+			state.response = errorHandler(false)
+		})
+		.addCase(
+			getPermissions.rejected,
+			(state, action: PayloadAction<any, any>) => {
+				state.status = 'REJECTED'
+				state.response = errorHandler(true, action.payload.message)
+			}
+		)
 })
 
 export default permissionsReducer

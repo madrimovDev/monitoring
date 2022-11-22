@@ -6,21 +6,18 @@ const PageNotFound = () => {
 	const navigate = useNavigate()
 	return (
 		<Result
-			status={404} title={404} subTitle={'Woops! Page Not Found'}
+			status={404}
+			title={404}
+			subTitle={'Woops! Page Not Found'}
 			extra={
 				<>
 					<Button
 						type={'primary'}
-						onClick={() => navigate('/')}
-					>
+						onClick={() => navigate('/')}>
 						Back To Home
 					</Button>
-					<Button
-						onClick={() => navigate('/login')}>
-						Login
-					</Button>
+					<Button onClick={() => navigate('/login')}>Login</Button>
 				</>
-
 			}
 		/>
 	)

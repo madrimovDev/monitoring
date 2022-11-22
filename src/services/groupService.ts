@@ -12,7 +12,7 @@ class GroupService {
 		return await api.get<GroupResponse>(`${this.base}/${id}`)
 	}
 
-	static async create (){
+	static async create() {
 		return await api.post(this.base)
 	}
 }

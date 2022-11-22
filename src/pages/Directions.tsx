@@ -7,14 +7,15 @@ import { getAllDirections } from '@store/actions/directionsActions'
 import { openModal } from '@store/actions/modalActions'
 
 const Directions = () => {
-
 	const dispatch = useAppDispatch()
-	
+
 	const onOpen = () => {
-		dispatch(openModal({
-			type: 'direction',
-			entity: 'create'
-		}))
+		dispatch(
+			openModal({
+				type: 'direction',
+				entity: 'create',
+			})
+		)
 	}
 
 	useEffect(() => {
@@ -24,9 +25,16 @@ const Directions = () => {
 	return (
 		<>
 			<Row style={{ marginTop: 60 }}>
-				<Col span={18} offset={3}>
+				<Col
+					span={18}
+					offset={3}>
 					<Space style={{ justifyContent: 'end', width: '100%' }}>
-						<Button onClick={onOpen} type={'primary'} icon={<FolderAddOutlined />}>Create Direction</Button>
+						<Button
+							onClick={onOpen}
+							type={'primary'}
+							icon={<FolderAddOutlined />}>
+							Create Direction
+						</Button>
 					</Space>
 					<Divider />
 					<DirectionsList />

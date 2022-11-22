@@ -8,11 +8,14 @@ interface DrawerActionPayload {
 	data?: Admin | Teacher
 }
 
-export const openDrawer = createAction('adminDrawer/open', ( args: DrawerActionPayload ) => {
-	return {
-		payload: {
-			...args
+export const openDrawer = createAction(
+	'adminDrawer/open',
+	(args: DrawerActionPayload) => {
+		return {
+			payload: {
+				...args,
+			},
 		}
 	}
-})
+)
 export const closeDrawer = createAction('adminDrawer/close')

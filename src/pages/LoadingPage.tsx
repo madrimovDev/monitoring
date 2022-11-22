@@ -12,15 +12,18 @@ const styles: CSSProperties = {
 	left: 0,
 	background: 'rgba(255,255,255, 0.6)',
 	backdropFilter: 'blur(2px)',
-	zIndex: 111
+	zIndex: 111,
 }
 
 const LoadingPage = () => {
 	return (
 		<div style={styles}>
-			<Spin size={'large'} style={{
-				transform: 'scale(2)'
-			}}/>
+			<Spin
+				size={'large'}
+				style={{
+					transform: 'scale(2)',
+				}}
+			/>
 		</div>
 	)
 }

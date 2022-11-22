@@ -1,21 +1,19 @@
 export interface Group {
-	id: number;
-	name: string;
-	months: number;
-	direction: string;
-	students: number;
+	id: number
+	name: string
+	months: number
+	direction: string
+	students: number
 }
 
 export interface GroupsResponse {
-	message: string;
-	groups: Group[];
+	message: string
+	groups: Group[]
 }
 
 export interface GroupResponse {
-	message: string;
-	group: Group;
+	message: string
+	group: Group
 }
 
-export interface NewGroup {
-	
-}
+export interface NewGroup {}

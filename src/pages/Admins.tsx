@@ -10,10 +10,12 @@ const Admins = () => {
 	const dispatch = useAppDispatch()
 
 	const onOpen = () => {
-		dispatch(openDrawer({
-			type: 'admin',
-			entity: 'create'
-		}))
+		dispatch(
+			openDrawer({
+				type: 'admin',
+				entity: 'create',
+			})
+		)
 		dispatch(getPermissions())
 	}
 
@@ -24,9 +26,16 @@ const Admins = () => {
 	return (
 		<>
 			<Row style={{ marginTop: 60 }}>
-				<Col span={18} offset={3}>
+				<Col
+					span={18}
+					offset={3}>
 					<Space style={{ justifyContent: 'end', width: '100%' }}>
-						<Button type={'primary'} onClick={onOpen} icon={<UserAddOutlined />}>Create Admin</Button>
+						<Button
+							type={'primary'}
+							onClick={onOpen}
+							icon={<UserAddOutlined />}>
+							Create Admin
+						</Button>
 					</Space>
 					<Divider />
 					<AdminTable />
@@ -34,7 +43,6 @@ const Admins = () => {
 			</Row>
 			<Drawer />
 		</>
-
 	)
 }
 

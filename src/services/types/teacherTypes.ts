@@ -1,21 +1,21 @@
 export interface Teacher {
-	id: number;
-	name: string;
-	userId: number;
-	surname: string;
-	username: string;
-	permissions: string[];
-	role: string;
+	id: number
+	name: string
+	userId: number
+	surname: string
+	username: string
+	permissions: string[]
+	role: string
 }
 
 export interface NewTeacher {
-	username: string;
-	password: string;
-	name: string;
-	surname: string;
-	birthday: string;
-	phone: string;
-	directions: number[];
+	username: string
+	password: string
+	name: string
+	surname: string
+	birthday: string
+	phone: string
+	directions: number[]
 }
 
 export interface TeachersResponse {

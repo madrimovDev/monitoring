@@ -1,7 +1,9 @@
-import React from 'react'
-import { MenuItems } from '@ui/layout/adminLayout/sidebar/menu/menuItems'
 import { MenuProps } from 'antd'
+
+import React from 'react'
 import { Link } from 'react-router-dom'
+
+import { MenuItems } from '@ui/layout/adminLayout/sidebar/menu/menuItems'
 
 const sidebarData = (menuItems: MenuItems[], permissions: string[]) => {
 	const _menuItems: MenuProps['items'] = []

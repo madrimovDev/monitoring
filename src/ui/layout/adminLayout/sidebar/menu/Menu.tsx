@@ -18,8 +18,14 @@ const Menu = () => {
 	}, [pathname])
 
 	return (
-		<AntMenu theme={'light'} mode={'inline'} defaultSelectedKeys={[currentPage]} selectedKeys={[currentPage]}
-						 style={{ marginTop: '60px' }} items={items} />
+		<AntMenu
+			theme={'light'}
+			mode={'inline'}
+			defaultSelectedKeys={[currentPage]}
+			selectedKeys={[currentPage]}
+			style={{ marginTop: '60px' }}
+			items={items}
+		/>
 	)
 }
 

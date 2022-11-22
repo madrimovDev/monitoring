@@ -12,7 +12,7 @@ const AdminLayout = lazy(() => import('@ui/layout/adminLayout'))
 const routes = createBrowserRouter([
 	{
 		path: '/login',
-		element: <SuspenseWithLoader children={<Login />} />
+		element: <SuspenseWithLoader children={<Login />} />,
 	},
 	{
 		path: '/',
@@ -20,19 +20,19 @@ const routes = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Navigation />
+				element: <Navigation />,
 			},
 			{
 				path: 'admin',
 				element: <SuspenseWithLoader children={<AdminLayout />} />,
-				children: adminRoutes
+				children: adminRoutes,
 			},
 			{
 				path: 'teacher',
-				element: <SuspenseWithLoader children={<TeacherLayout />} />
-			}
-		]
-	}
+				element: <SuspenseWithLoader children={<TeacherLayout />} />,
+			},
+		],
+	},
 ])
 
 export default routes

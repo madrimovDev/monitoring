@@ -12,14 +12,14 @@ const Drawer = () => {
 	const onClose = () => dispatch(closeDrawer())
 
 	return (
-		<AntDrawer title={`${entity} ${type}`} headerStyle={{ textTransform: 'capitalize' }} width={500} onClose={onClose}
-							 open={open}>
-			{
-				type === 'admin' && <AdminCreateForm />
-			}
-			{
-				type === 'teacher' && <TeacherCreateForm />
-			}
+		<AntDrawer
+			title={`${entity} ${type}`}
+			headerStyle={{ textTransform: 'capitalize' }}
+			width={500}
+			onClose={onClose}
+			open={open}>
+			{type === 'admin' && <AdminCreateForm />}
+			{type === 'teacher' && <TeacherCreateForm />}
 		</AntDrawer>
 	)
 }

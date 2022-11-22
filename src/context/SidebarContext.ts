@@ -7,6 +7,8 @@ interface SidebarContextType {
 	onToggle: () => void
 }
 
-const SidebarContext = createContext<SidebarContextType>({} as SidebarContextType)
+const SidebarContext = createContext<SidebarContextType>(
+	{} as SidebarContextType
+)
 
 export default SidebarContext

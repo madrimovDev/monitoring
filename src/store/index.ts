@@ -1,5 +1,10 @@
 export { default as store } from './store'
-export { adminDrawerReducer, authReducer, dashboardReducer, permissionsReducer } from './reducers'
+export {
+	adminDrawerReducer,
+	authReducer,
+	dashboardReducer,
+	permissionsReducer,
+} from './reducers'
 export {
 	openDrawer,
 	closeDrawer,
@@ -7,9 +12,15 @@ export {
 	verifyAction,
 	logoutAction,
 	loginAction,
-	getDashboard
+	getDashboard,
 } from './actions'
 
 export {
-	auth, permissions, dashboard, drawer, admins, teachers, directions
+	auth,
+	permissions,
+	dashboard,
+	drawer,
+	admins,
+	teachers,
+	directions,
 } from './selectors/selectors'

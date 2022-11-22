@@ -24,9 +24,15 @@ const Login = () => {
 
 	return (
 		<Row>
-			<Col span={6} offset={9}>
+			<Col
+				span={6}
+				offset={9}>
 				<div style={{ marginTop: '10vh' }}>
-					<Title style={{ fontWeight: 600 }} level={4}>Data Monitoring</Title>
+					<Title
+						style={{ fontWeight: 600 }}
+						level={4}>
+						Data Monitoring
+					</Title>
 					<Divider />
 					<Form />
 				</div>

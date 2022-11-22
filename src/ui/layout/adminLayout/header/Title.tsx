@@ -3,15 +3,17 @@ import { PageHeader } from 'antd'
 import { useLocation } from 'react-router-dom'
 import { pathnameParse } from '@utils'
 
-
 const Title = () => {
 	const { pathname } = useLocation()
 	const title = pathnameParse({
 		def: 'Dashboard',
-		pathname
+		pathname,
 	})
 	return (
-		<PageHeader style={{ textTransform: 'capitalize', padding: 0 }} title={title} />
+		<PageHeader
+			style={{ textTransform: 'capitalize', padding: 0 }}
+			title={title}
+		/>
 	)
 }
 

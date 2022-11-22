@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 
 const Navigation = () => {
 	const { data } = useAppSelector(auth)
-	
+
 	switch (data?.role) {
 		case 'admin': {
 			return <Navigate to={'admin'} />

@@ -5,19 +5,20 @@ interface SidebarProviderPropsType {
 	children: ReactNode
 }
 
-const SidebarProvider = ( { children }: SidebarProviderPropsType ) => {
+const SidebarProvider = ({ children }: SidebarProviderPropsType) => {
 	const [open, setOpen] = useState<boolean>(false)
 	const onOpen = () => setOpen(true)
 	const onClose = () => setOpen(false)
-	const onToggle = () => setOpen(value => !value)
+	const onToggle = () => setOpen((value) => !value)
 	const value = {
-		open, onOpen, onClose, onToggle
+		open,
+		onOpen,
+		onClose,
+		onToggle,
 	}
 
 	return (
-		<SidebarContext.Provider value={value}>
-			{children}
-		</SidebarContext.Provider>
+		<SidebarContext.Provider value={value}>{children}</SidebarContext.Provider>
 	)
 }
 

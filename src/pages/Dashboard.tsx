@@ -16,18 +16,37 @@ const Dashboard = () => {
 
 	return (
 		<>
-			<Title level={2} style={{
-				marginTop: 60
-			}}>Total</Title>
+			<Title
+				level={2}
+				style={{
+					marginTop: 60,
+				}}>
+				Total
+			</Title>
 			<Divider />
 			<Row gutter={[20, 20]}>
-
 				{data && (
 					<>
-						<DashboardStatistics loading={status === 'PENDING'} title={'Directions'} count={data?.directions.length} />
-						<DashboardStatistics loading={status === 'PENDING'} title={'Students'} count={data?.students} />
-						<DashboardStatistics loading={status === 'PENDING'} title={'Teachers'} count={data?.teachers} />
-						<DashboardStatistics loading={status === 'PENDING'} title={'Groups'} count={data?.groups} />
+						<DashboardStatistics
+							loading={status === 'PENDING'}
+							title={'Directions'}
+							count={data?.directions.length}
+						/>
+						<DashboardStatistics
+							loading={status === 'PENDING'}
+							title={'Students'}
+							count={data?.students}
+						/>
+						<DashboardStatistics
+							loading={status === 'PENDING'}
+							title={'Teachers'}
+							count={data?.teachers}
+						/>
+						<DashboardStatistics
+							loading={status === 'PENDING'}
+							title={'Groups'}
+							count={data?.groups}
+						/>
 					</>
 				)}
 			</Row>

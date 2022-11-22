@@ -11,10 +11,12 @@ const Teachers = () => {
 	const dispatch = useAppDispatch()
 
 	const onOpen = () => {
-		dispatch(openDrawer({
-			type: 'teacher',
-			entity: 'create'
-		}))
+		dispatch(
+			openDrawer({
+				type: 'teacher',
+				entity: 'create',
+			})
+		)
 		dispatch(getAllDirections())
 	}
 
@@ -25,9 +27,16 @@ const Teachers = () => {
 	return (
 		<>
 			<Row style={{ marginTop: 60 }}>
-				<Col span={18} offset={3}>
+				<Col
+					span={18}
+					offset={3}>
 					<Space style={{ justifyContent: 'end', width: '100%' }}>
-						<Button type={'primary'} onClick={onOpen} icon={<UserAddOutlined />}>Create Teacher</Button>
+						<Button
+							type={'primary'}
+							onClick={onOpen}
+							icon={<UserAddOutlined />}>
+							Create Teacher
+						</Button>
 					</Space>
 					<Divider />
 					<TeacherTable />
