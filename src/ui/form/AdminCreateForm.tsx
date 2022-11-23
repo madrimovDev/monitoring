@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
-import { Button, Checkbox, Divider, Form, Input } from 'antd'
-import { drawer, permissions } from '@store'
 import { useAppDispatch, useAppSelector } from '@hook'
-import { fieldsData } from '@utils'
+import { admins, drawer, permissions } from '@store'
 import { createAdmin, updateAdmin } from '@store/actions/adminsActions'
+import { fieldsData } from '@utils'
+import { Button, Checkbox, Divider, Form, Input, notification } from 'antd'
+
+import React, { useEffect, useState } from 'react'
 
 const { Item } = Form
 
@@ -13,6 +14,9 @@ const AdminCreateForm = () => {
 
 	const { open, data: drawerData, entity } = useAppSelector(drawer)
 	const { data: permissionsData } = useAppSelector(permissions)
+	const { status, response } = useAppSelector(admins)
+
+	const [finished, setFinished] = useState<boolean>(false)
 
 	const fields = fieldsData(drawerData)
 
@@ -22,12 +26,31 @@ const AdminCreateForm = () => {
 		} else {
 			dispatch(
 				updateAdmin({
-					admin: formData,
+					admin: {
+						...formData,
+						password: '',
+					},
 					id: drawerData?.id || 0,
 				})
 			)
 		}
+		setFinished(true)
 	}
+
+	useEffect(() => {
+		if (status === 'REJECTED' && finished) {
+			notification.error({
+				message: response.errorMessage,
+			})
+			setFinished(false)
+		} else if (status === 'FULFILLED' && finished) {
+			notification.success({
+				message: entity === 'create' ? 'admin created' : 'admin updated',
+			})
+			setFinished(false)
+			form.resetFields()
+		}
+	}, [status])
 
 	useEffect(() => {
 		if (!open) {

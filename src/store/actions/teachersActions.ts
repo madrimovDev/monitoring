@@ -1,7 +1,7 @@
+import { responseErrorMapper } from '@mapper'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { TeacherService } from '@services'
-import { NewTeacher } from '@services/types/teacherTypes'
-import { responseErrorMapper } from '@mapper'
+import { NewTeacher, Teacher } from '@services/types/teacherTypes'
 import { AxiosError } from 'axios'
 
 export const getAllTeachers = createAsyncThunk(
@@ -42,7 +42,16 @@ export const createTeacher = createAsyncThunk(
 
 export const updateTeacher = createAsyncThunk(
 	'teachers/update',
-	async (teacher: NewTeacher, {}) => {}
+	async (teacher: { id: number; teacher: NewTeacher }, { rejectWithValue }) => {
+		try {
+			const result = await TeacherService.update(teacher.id, teacher.teacher)
+			return result.data
+		} catch (e) {
+			throw rejectWithValue(
+				responseErrorMapper(e as AxiosError<{ message: string }>)
+			)
+		}
+	}
 )
 
 export const deleteTeacher = createAsyncThunk(

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { directions, drawer } from '@store'
+import { createTeacher, updateTeacher } from '@store/actions/teachersActions'
+import { fieldsData } from '@utils'
 import {
 	Button,
 	Checkbox,
@@ -10,8 +11,8 @@ import {
 	InputNumber,
 	Space,
 } from 'antd'
-import { fieldsData } from '@utils'
-import { createTeacher } from '@store/actions/teachersActions'
+
+import React, { useEffect } from 'react'
 
 const { Item } = Form
 
@@ -30,13 +31,25 @@ const TeacherCreateForm = () => {
 			directs.push(direction?.find((item) => item.name === d)?.id)
 		})
 
-		dispatch(
-			createTeacher({
-				...d,
-				phone: d.phone.toString(),
-				directions: directs,
-			})
-		)
+		if (entity === 'create') {
+			dispatch(
+				createTeacher({
+					...d,
+					phone: d.phone.toString(),
+					directions: directs,
+				})
+			)
+		} else if (entity === 'update') {
+			dispatch(
+				updateTeacher({
+					id: data?.id!,
+					teacher: {
+						...d,
+						directions: directs,
+					},
+				})
+			)
+		}
 	}
 
 	useEffect(() => {

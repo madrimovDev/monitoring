@@ -1,7 +1,8 @@
-import { InitialState } from '@store/types/types'
+import { PayloadAction, createReducer } from '@reduxjs/toolkit'
 import { Teacher } from '@services/types/teacherTypes'
-import { createReducer, PayloadAction } from '@reduxjs/toolkit'
 import { createTeacher, deleteTeacher, getAllTeachers } from '@store/actions'
+import { updateTeacher } from '@store/actions/teachersActions'
+import { InitialState } from '@store/types/types'
 import { errorHandler } from '@utils'
 
 const initialState: InitialState<Teacher[] | null> = {
@@ -44,6 +45,25 @@ const teachersReducer = createReducer(initialState, (builder) => {
 		})
 		.addCase(
 			createTeacher.rejected,
+			(state, action: PayloadAction<any, any>) => {
+				state.status = 'REJECTED'
+				state.response = errorHandler(true, action.payload.message)
+			}
+		)
+		.addCase(updateTeacher.pending, (state) => {
+			state.status = 'PENDING'
+			state.response = errorHandler(false)
+		})
+		.addCase(updateTeacher.fulfilled, (state, action) => {
+			state.status = 'FULFILLED'
+			state.data =
+				state.data?.map((d) =>
+					d.id === action.payload.teacher.id ? { ...action.payload.teacher } : d
+				) || []
+			state.response = errorHandler(false)
+		})
+		.addCase(
+			updateTeacher.rejected,
 			(state, action: PayloadAction<any, any>) => {
 				state.status = 'REJECTED'
 				state.response = errorHandler(true, action.payload.message)

@@ -1,11 +1,12 @@
-import React from 'react'
-import { Badge, Button, Space, Table, Typography } from 'antd'
+import { DeleteFilled, EditFilled } from '@ant-design/icons'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { openDrawer, teachers } from '@store'
-import { getFullDate } from '@utils'
-import { DeleteFilled, EditFilled } from '@ant-design/icons'
-import { getAllDirections } from '@store/actions/directionsActions'
 import { deleteTeacher } from '@store/actions'
+import { getAllDirections } from '@store/actions/directionsActions'
+import { getFullDate } from '@utils'
+import { Badge, Button, Space, Table, Typography } from 'antd'
+
+import React from 'react'
 
 const { Column, ColumnGroup } = Table
 const { Text } = Typography
@@ -37,25 +38,15 @@ const TeacherTable = () => {
 			loading={status === 'PENDING'}
 			dataSource={data || []}
 			rowKey={'id'}>
-			<ColumnGroup title={'Full Name'}>
-				<Column
-					title={'Name'}
-					dataIndex={'name'}
-					key={'name'}
-				/>
-				<Column
-					title={'Surname'}
-					dataIndex={'surname'}
-					key={'surname'}
-				/>
-			</ColumnGroup>
 			<Column
-				title={'Birthday'}
-				dataIndex={'birthday'}
-				key={'birthday'}
-				render={(value) => {
-					return <>{getFullDate(value)}</>
-				}}
+				title={'Name'}
+				dataIndex={'name'}
+				key={'name'}
+			/>
+			<Column
+				title={'Surname'}
+				dataIndex={'surname'}
+				key={'surname'}
 			/>
 			<Column
 				title={'Phone'}
