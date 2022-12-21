@@ -35,11 +35,6 @@ const TeacherTable = () => {
 				<Column title={'Name'} dataIndex={'name'} key={'name'} />
 				<Column title={'Surname'} dataIndex={'surname'} key={'surname'} />
 			</ColumnGroup>
-			<Column title={'Birthday'} dataIndex={'birthday'} key={'birthday'} render={( value ) => {
-				return (
-					<>{getFullDate(value)}</>
-				)
-			}} />
 			<Column title={'Phone'} dataIndex={'phone'} key={'phone'} />
 			<Column title={'Groups'} dataIndex={'groups'} key={'groups'}
 							render={( value: { id: number, name: string }[] ) => {

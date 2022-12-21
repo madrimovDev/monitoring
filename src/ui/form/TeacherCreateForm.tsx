@@ -1,7 +1,15 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@hook'
 import { directions, drawer } from '@store'
-import { Button, Checkbox, Divider, Form, Input, InputNumber, Space } from 'antd'
+import {
+	Button,
+	Checkbox,
+	Divider,
+	Form,
+	Input,
+	InputNumber,
+	Space,
+} from 'antd'
 import { fieldsData } from '@utils'
 import { createTeacher } from '@store/actions/teachersActions'
 
@@ -14,21 +22,22 @@ const TeacherCreateForm = () => {
 	const fields = fieldsData(data)
 	const dispatch = useAppDispatch()
 
-	const onFinish = ( d: any ) => {
+	const onFinish = (d: any) => {
 		const { directions } = d
 		let directs: any[] = []
 
-		directions.forEach(( d: string ) => {
-			directs.push(direction?.find(item => item.name === d)?.id)
+		directions.forEach((d: string) => {
+			directs.push(direction?.find((item) => item.name === d)?.id)
 		})
 
-		dispatch(createTeacher({
-			...d,
-			phone: d.phone.toString(),
-			directions: directs
-		}))
+		dispatch(
+			createTeacher({
+				...d,
+				phone: d.phone.toString(),
+				directions: directs,
+			})
+		)
 	}
-
 
 	useEffect(() => {
 		if (!open) {
@@ -37,61 +46,80 @@ const TeacherCreateForm = () => {
 	}, [open])
 
 	return (
-		<Form form={form} onFinish={onFinish} layout={'vertical'} fields={fields}>
-			<Item label={'Username'} name={'username'} rules={[
-				{
-					required: true,
-					min: 3
-				}
-			]}>
+		<Form
+			form={form}
+			onFinish={onFinish}
+			layout={'vertical'}
+			fields={fields}>
+			<Item
+				label={'Username'}
+				name={'username'}
+				rules={[
+					{
+						required: true,
+						min: 3,
+					},
+				]}>
 				<Input />
 			</Item>
-			<Item label={'Password'} name={'password'} rules={[
-				{
-					required: entity === 'create',
-					min: 3
-				}
-			]}>
+			<Item
+				label={'Password'}
+				name={'password'}
+				rules={[
+					{
+						required: entity === 'create',
+						min: 3,
+					},
+				]}>
 				<Input />
 			</Item>
 			<Divider children={'Teacher Date'} />
-			<Item label={'Name'} name={'name'} rules={[
-				{
-					required: true,
-					min: 3
-				}
-			]}>
+			<Item
+				label={'Name'}
+				name={'name'}
+				rules={[
+					{
+						required: true,
+						min: 3,
+					},
+				]}>
 				<Input />
 			</Item>
-			<Item label={'Surname'} name={'surname'} rules={[
-				{
-					required: true,
-					min: 3
-				}
-			]}>
+			<Item
+				label={'Surname'}
+				name={'surname'}
+				rules={[
+					{
+						required: true,
+						min: 3,
+					},
+				]}>
 				<Input />
 			</Item>
 			<Space>
-				<Item label={'Birthday'} name={'birthday'} rules={[
-					{
-						type: 'date'
-					}
-				]}>
-					<Input type={'date'} />
-				</Item>
-				<Item label={'Phone'} name={'phone'} rules={[
-					{
-						required: entity === 'create'
-					}
-				]}>
-					<InputNumber controls={false} style={{
+				<Item
+					label={'Phone'}
+					name={'phone'}
+					style={{
 						width: '100%'
-					}} />
+					}}
+					rules={[
+						{
+							required: entity === 'create',
+						},
+					]}>
+					<InputNumber
+						controls={false}
+						type='number'
+						style={{
+							width: '100%',
+						}}
+					/>
 				</Item>
 			</Space>
 			<Divider children={'Directions'} />
 			<Item name={'directions'}>
-				<Checkbox.Group options={direction?.map(d => d.name)} />
+				<Checkbox.Group options={direction?.map((d) => d.name)} />
 			</Item>
 			<Item>
 				<Button htmlType={'submit'}>Submit</Button>
